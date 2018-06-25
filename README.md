@@ -23,7 +23,15 @@ Refer to the [official documentation](https://maven.apache.org/plugins/maven-dep
 
 ### Maven users
 
-Add this dependency to your project's POM:
+Add following repository and dependency to your project's POM
+
+```xml
+<repository>
+    <id>groupdocs-artifact-repository</id>
+    <name>GroupDocs Artifact Repository</name>
+    <url>http://artifact.groupdocs.cloud/repo</url>
+</repository>
+```
 
 ```xml
 <dependency>
