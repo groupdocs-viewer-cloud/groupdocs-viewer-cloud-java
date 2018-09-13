@@ -67,7 +67,7 @@ import com.groupdocs.cloud.viewer.model.ApiError;
 public class ApiClient {
     private Configuration configuration = null;
 
-    private String basePath = null;
+    private String serverUrl = null;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -75,12 +75,9 @@ public class ApiClient {
     private Map<String, Authentication> authentications;
 
     private DateFormat dateFormat;
-    private DateFormat datetimeFormat;
-    private boolean lenientDatetimeFormat;
-    private int dateLength;
-
     private InputStream sslCaCert;
     private boolean verifyingSsl;
+    
     private KeyManager[] keyManagers;
 
     private OkHttpClient httpClient;
@@ -93,45 +90,44 @@ public class ApiClient {
      */
     public ApiClient(Configuration configuration) {
         this.configuration = configuration;
-        this.basePath = configuration.getBasePath();
-
+        this.serverUrl = configuration.getServerUrl();
         this.httpClient = new OkHttpClient();
-
-
         this.verifyingSsl = true;
-
         this.json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/18.5/java");
+        setUserAgent("java-sdk/18.7");
+
+        // Set connection timeout
+        setConnectTimeout(configuration.getTimeout());
 
         // Setup authentications (key: authentication name, value: authentication).
         this.authentications = new HashMap<String, Authentication>();
-        String tokenUrl = configuration.getBasePath().replace(configuration.getContextPath(), "");
+
         String appSid = configuration.getAppSid();
         String appKey = configuration.getAppKey();
-        this.authentications.put("oauth", new OAuth(tokenUrl, appSid, appKey));
+        this.authentications.put("oauth", new OAuth(configuration, appSid, appKey));
         // Prevent the authentications from being modified.
         this.authentications = Collections.unmodifiableMap(authentications);
     }
 
     /**
-     * Get base path
+     * Get server URL, default value is https://api.groupdocs.cloud/v1
      *
-     * @return Base path
+     * @return Server URL
      */
-    public String getBasePath() {
-        return basePath;
+    public String getServerUrl() {
+        return serverUrl;
     }
 
     /**
-     * Set base path
+     * Set server URL
      *
-     * @param basePath Base path of the URL (e.g https://api.groupdocs.cloud/v1
+     * @param serverUrl Server URL
      * @return An instance of OkHttpClient
      */
-    public ApiClient setBasePath(String basePath) {
-        this.basePath = basePath;
+    public ApiClient setServerUrl(String serverUrl) {
+        this.serverUrl = serverUrl;
         return this;
     }
 
@@ -968,7 +964,7 @@ public class ApiClient {
      */
     public String buildUrl(String path, List<Pair> queryParams, List<Pair> collectionQueryParams) {
         final StringBuilder url = new StringBuilder();
-        url.append(basePath).append(path);
+        url.append(serverUrl).append(path);
 
         if (queryParams != null && !queryParams.isEmpty()) {
             // support (constant) query string in `path`, e.g. "/posts?draft=1"

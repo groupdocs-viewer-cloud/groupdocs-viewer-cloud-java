@@ -33,6 +33,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.groupdocs.cloud.viewer.model.Tile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -61,6 +62,9 @@ public class CadOptions {
 
   @SerializedName("layers")
   private List<String> layers = null;
+
+  @SerializedName("tiles")
+  private List<Tile> tiles = null;
 
   public CadOptions scaleFactor(Double scaleFactor) {
     this.scaleFactor = scaleFactor;
@@ -178,6 +182,32 @@ public class CadOptions {
     this.layers = layers;
   }
 
+  public CadOptions tiles(List<Tile> tiles) {
+    this.tiles = tiles;
+    return this;
+  }
+
+  public CadOptions addTilesItem(Tile tilesItem) {
+    if (this.tiles == null) {
+      this.tiles = new ArrayList<Tile>();
+    }
+    this.tiles.add(tilesItem);
+    return this;
+  }
+
+   /**
+   * The coordinates of the drawing regions, that should be rendered. Please note, that this option works only for DWG format. When the list is empty, then whole drawing is rendered. When the list contains at least one tile, then ScaleFactor, Width, Height, RenderLayouts and LayoutName properties are ignored. 
+   * @return tiles
+  **/
+  @ApiModelProperty(value = "The coordinates of the drawing regions, that should be rendered. Please note, that this option works only for DWG format. When the list is empty, then whole drawing is rendered. When the list contains at least one tile, then ScaleFactor, Width, Height, RenderLayouts and LayoutName properties are ignored. ")
+  public List<Tile> getTiles() {
+    return tiles;
+  }
+
+  public void setTiles(List<Tile> tiles) {
+    this.tiles = tiles;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -193,12 +223,13 @@ public class CadOptions {
         Objects.equals(this.height, cadOptions.height) &&
         Objects.equals(this.renderLayouts, cadOptions.renderLayouts) &&
         Objects.equals(this.layoutName, cadOptions.layoutName) &&
-        Objects.equals(this.layers, cadOptions.layers);
+        Objects.equals(this.layers, cadOptions.layers) &&
+        Objects.equals(this.tiles, cadOptions.tiles);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scaleFactor, width, height, renderLayouts, layoutName, layers);
+    return Objects.hash(scaleFactor, width, height, renderLayouts, layoutName, layers, tiles);
   }
 
 
@@ -213,6 +244,7 @@ public class CadOptions {
     sb.append("    renderLayouts: ").append(toIndentedString(renderLayouts)).append("\n");
     sb.append("    layoutName: ").append(toIndentedString(layoutName)).append("\n");
     sb.append("    layers: ").append(toIndentedString(layers)).append("\n");
+    sb.append("    tiles: ").append(toIndentedString(tiles)).append("\n");
     sb.append("}");
     return sb.toString();
   }

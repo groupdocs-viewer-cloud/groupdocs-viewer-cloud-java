@@ -168,6 +168,9 @@ public class JSON {
                     return null;
                 default:
                     String date = in.nextString();
+                    if(date.equals("0001-01-01T00:00:00")) {
+                        return OffsetDateTime.MIN;
+                    }
                     if (date.endsWith("+0000")) {
                         date = date.substring(0, date.length()-5) + "Z";
                     }

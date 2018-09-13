@@ -28,12 +28,12 @@ public class BaseApiTest {
         super();
 
         Configuration configuration = new Configuration(Config.AppSID, Config.AppKey);
-        configuration.setBasePath(Config.BasePath);
+        configuration.setApiBaseUrl(Config.ApiBaseUrl);
 
         viewerApi = new ViewerApi(configuration);
         viewerApi.getApiClient().setConnectTimeout(10 * 1000);
 
-        storageApi = new StorageApi(Config.BasePath, Config.AppKey, Config.AppSID);
+        storageApi = new StorageApi(Config.ApiBaseUrl+ "/v1", Config.AppKey, Config.AppSID);
     }
 
     @After

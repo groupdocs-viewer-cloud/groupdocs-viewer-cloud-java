@@ -28,12 +28,14 @@
 package com.groupdocs.cloud.viewer.client.auth;
 
 import com.groupdocs.cloud.viewer.client.ApiException;
+import com.groupdocs.cloud.viewer.client.Configuration;
 import com.groupdocs.cloud.viewer.client.JSON;
 import com.groupdocs.cloud.viewer.client.Pair;
 import com.squareup.okhttp.*;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -66,12 +68,14 @@ public class OAuth implements Authentication {
     this.expirationTimeMillis = System.currentTimeMillis() + expiresIn * MILLIS_PER_SECOND;
   }
 
-  public OAuth(String tokenUrl, String appSid, String appKey) {
-    this.tokenUrl = tokenUrl;
+  public OAuth(Configuration configuration, String appSid, String appKey) {
+    this.tokenUrl = configuration.getApiBaseUrl();
     this.appSid = appSid;
     this.appKey = appKey;
 
     this.httpClient = new OkHttpClient();
+    this.httpClient.setConnectTimeout(configuration.getTimeout(), TimeUnit.MILLISECONDS);
+
     this.json = new JSON();
   }
 

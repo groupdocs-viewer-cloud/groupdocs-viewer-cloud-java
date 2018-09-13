@@ -34,7 +34,8 @@ import org.junit.runners.Suite.SuiteClasses;
 public class TestSetup {
     
     private static StorageApi storageApi = 
-        new StorageApi(Config.BasePath, Config.AppKey, Config.AppSID);
+        new StorageApi(Config.ApiBaseUrl + "/v1", Config.AppKey, Config.AppSID);
+  
     private static String resourcesPath = 
         Paths.get("resources").toAbsolutePath().toString();
 
@@ -73,6 +74,4 @@ public class TestSetup {
         String filePath = relativePath.replace("\\", "/");
         storageApi.PutCreate(filePath, null, null, file);
     }
-
-   
 }
