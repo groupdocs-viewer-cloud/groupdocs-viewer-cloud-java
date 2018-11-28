@@ -71,6 +71,12 @@ public class DocumentInfo {
   @SerializedName("layers")
   private List<String> layers = null;
 
+  @SerializedName("startDate")
+  private OffsetDateTime startDate = null;
+
+  @SerializedName("endDate")
+  private OffsetDateTime endDate = null;
+
   public DocumentInfo fileName(String fileName) {
     this.fileName = fileName;
     return this;
@@ -134,7 +140,7 @@ public class DocumentInfo {
    * Size in bytes.
    * @return size
   **/
-  @ApiModelProperty(required = true, value = "Size in bytes.")
+  @ApiModelProperty(value = "Size in bytes.")
   public Long getSize() {
     return size;
   }
@@ -152,7 +158,7 @@ public class DocumentInfo {
    * Modification date.
    * @return dateModified
   **/
-  @ApiModelProperty(required = true, value = "Modification date.")
+  @ApiModelProperty(value = "Modification date.")
   public OffsetDateTime getDateModified() {
     return dateModified;
   }
@@ -239,6 +245,42 @@ public class DocumentInfo {
     this.layers = layers;
   }
 
+  public DocumentInfo startDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * For MS Project documents, The date time from which the project started.
+   * @return startDate
+  **/
+  @ApiModelProperty(value = "For MS Project documents, The date time from which the project started.")
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+  public DocumentInfo endDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * For MS Project documents, the date time when the project is to be completed.
+   * @return endDate
+  **/
+  @ApiModelProperty(value = "For MS Project documents, the date time when the project is to be completed.")
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -256,12 +298,14 @@ public class DocumentInfo {
         Objects.equals(this.dateModified, documentInfo.dateModified) &&
         Objects.equals(this.pages, documentInfo.pages) &&
         Objects.equals(this.attachments, documentInfo.attachments) &&
-        Objects.equals(this.layers, documentInfo.layers);
+        Objects.equals(this.layers, documentInfo.layers) &&
+        Objects.equals(this.startDate, documentInfo.startDate) &&
+        Objects.equals(this.endDate, documentInfo.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileName, extension, fileFormat, size, dateModified, pages, attachments, layers);
+    return Objects.hash(fileName, extension, fileFormat, size, dateModified, pages, attachments, layers, startDate, endDate);
   }
 
 
@@ -278,6 +322,8 @@ public class DocumentInfo {
     sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("    attachments: ").append(toIndentedString(attachments)).append("\n");
     sb.append("    layers: ").append(toIndentedString(layers)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -36,6 +36,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The Microsoft Project documents rendering options.
@@ -47,6 +48,12 @@ public class ProjectOptions {
 
   @SerializedName("timeUnit")
   private String timeUnit = null;
+
+  @SerializedName("startDate")
+  private OffsetDateTime startDate = null;
+
+  @SerializedName("endDate")
+  private OffsetDateTime endDate = null;
 
   public ProjectOptions pageSize(String pageSize) {
     this.pageSize = pageSize;
@@ -84,6 +91,42 @@ public class ProjectOptions {
     this.timeUnit = timeUnit;
   }
 
+  public ProjectOptions startDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * The start date of a Gantt Chart View to render.        
+   * @return startDate
+  **/
+  @ApiModelProperty(value = "The start date of a Gantt Chart View to render.        ")
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+  public ProjectOptions endDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * The end date of a Gantt Chart View to render.
+   * @return endDate
+  **/
+  @ApiModelProperty(value = "The end date of a Gantt Chart View to render.")
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -95,12 +138,14 @@ public class ProjectOptions {
     }
     ProjectOptions projectOptions = (ProjectOptions) o;
     return Objects.equals(this.pageSize, projectOptions.pageSize) &&
-        Objects.equals(this.timeUnit, projectOptions.timeUnit);
+        Objects.equals(this.timeUnit, projectOptions.timeUnit) &&
+        Objects.equals(this.startDate, projectOptions.startDate) &&
+        Objects.equals(this.endDate, projectOptions.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pageSize, timeUnit);
+    return Objects.hash(pageSize, timeUnit, startDate, endDate);
   }
 
 
@@ -111,6 +156,8 @@ public class ProjectOptions {
     
     sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
     sb.append("    timeUnit: ").append(toIndentedString(timeUnit)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

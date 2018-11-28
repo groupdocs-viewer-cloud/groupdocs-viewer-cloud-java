@@ -92,7 +92,7 @@ public class RowInfo {
    * Row left coordinate.
    * @return rowLeft
   **/
-  @ApiModelProperty(required = true, value = "Row left coordinate.")
+  @ApiModelProperty(value = "Row left coordinate.")
   public Double getRowLeft() {
     return rowLeft;
   }
@@ -110,7 +110,7 @@ public class RowInfo {
    * Row top coordinate.
    * @return rowTop
   **/
-  @ApiModelProperty(required = true, value = "Row top coordinate.")
+  @ApiModelProperty(value = "Row top coordinate.")
   public Double getRowTop() {
     return rowTop;
   }
@@ -128,7 +128,7 @@ public class RowInfo {
    * Row width.
    * @return rowWidth
   **/
-  @ApiModelProperty(required = true, value = "Row width.")
+  @ApiModelProperty(value = "Row width.")
   public Double getRowWidth() {
     return rowWidth;
   }
@@ -146,7 +146,7 @@ public class RowInfo {
    * Row height.
    * @return rowHeight
   **/
-  @ApiModelProperty(required = true, value = "Row height.")
+  @ApiModelProperty(value = "Row height.")
   public Double getRowHeight() {
     return rowHeight;
   }

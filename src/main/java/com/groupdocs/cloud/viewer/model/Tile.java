@@ -63,7 +63,7 @@ public class Tile {
    * The X coordinate of the lowest left point on the drawing where the tile begins.
    * @return startPointX
   **/
-  @ApiModelProperty(required = true, value = "The X coordinate of the lowest left point on the drawing where the tile begins.")
+  @ApiModelProperty(value = "The X coordinate of the lowest left point on the drawing where the tile begins.")
   public Integer getStartPointX() {
     return startPointX;
   }
@@ -81,7 +81,7 @@ public class Tile {
    * The Y coordinate of the lowest left point on the drawing where the tile begins.
    * @return startPointY
   **/
-  @ApiModelProperty(required = true, value = "The Y coordinate of the lowest left point on the drawing where the tile begins.")
+  @ApiModelProperty(value = "The Y coordinate of the lowest left point on the drawing where the tile begins.")
   public Integer getStartPointY() {
     return startPointY;
   }
@@ -99,7 +99,7 @@ public class Tile {
    * The width of the tile.
    * @return width
   **/
-  @ApiModelProperty(required = true, value = "The width of the tile.")
+  @ApiModelProperty(value = "The width of the tile.")
   public Integer getWidth() {
     return width;
   }
@@ -117,7 +117,7 @@ public class Tile {
    * The height of the tile.
    * @return height
   **/
-  @ApiModelProperty(required = true, value = "The height of the tile.")
+  @ApiModelProperty(value = "The height of the tile.")
   public Integer getHeight() {
     return height;
   }

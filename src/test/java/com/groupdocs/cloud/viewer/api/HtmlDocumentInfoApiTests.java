@@ -8,12 +8,13 @@ import java.io.IOException;
 import com.groupdocs.cloud.viewer.client.ApiException;
 import com.groupdocs.cloud.viewer.model.DocumentInfo;
 import com.groupdocs.cloud.viewer.model.DocumentInfoOptions;
+import com.groupdocs.cloud.viewer.model.ProjectOptions;
 import com.groupdocs.cloud.viewer.model.requests.HtmlGetDocumentInfoFromContentRequest;
 import com.groupdocs.cloud.viewer.model.requests.HtmlGetDocumentInfoFromUrlRequest;
 import com.groupdocs.cloud.viewer.model.requests.HtmlGetDocumentInfoFromUrlWithOptionsRequest;
 import com.groupdocs.cloud.viewer.model.requests.HtmlGetDocumentInfoRequest;
 import com.groupdocs.cloud.viewer.model.requests.HtmlGetDocumentInfoWithOptionsRequest;
-
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Test;
 
 /**
@@ -317,4 +318,37 @@ public class HtmlDocumentInfoApiTests extends BaseApiTest {
         assertEquals(1, response.getPages().size());
     }
 
+
+    /**
+     * Retrieves document information with specified DocumentInfoOptions and ProjectOptions
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void htmlGetDocumentInfoWithProjectOptionsTest() throws ApiException {
+        TestFile file = TestFiles.ProjectMpp;
+
+        DocumentInfoOptions options = new DocumentInfoOptions();
+
+        ProjectOptions projectOptions = new ProjectOptions();
+        projectOptions.setPageSize("Unknown");
+        projectOptions.setTimeUnit("Months");
+        projectOptions.setStartDate(OffsetDateTime.parse("2008-07-01T00:00:00Z"));
+        projectOptions.setEndDate(OffsetDateTime.parse("2008-07-31T00:00:00Z"));
+
+        options.setProjectOptions(projectOptions);
+
+        HtmlGetDocumentInfoWithOptionsRequest request = new HtmlGetDocumentInfoWithOptionsRequest();
+        request.setFileName(file.getFileName());
+        request.setDocumentInfoOptions(options);
+        request.setFolder(file.getFolder());
+        request.setStorage(null);
+
+        DocumentInfo response = viewerApi.htmlGetDocumentInfoWithOptions(request);
+
+        assertEquals(file.getFileName(), response.getFileName());        
+        assertEquals(2, response.getPages().size());
+        assertEquals(OffsetDateTime.parse("2008-06-01T00:00:00Z"), response.getStartDate());
+        assertEquals(OffsetDateTime.parse("2008-09-03T00:00:00Z"), response.getEndDate());
+    }    
 }

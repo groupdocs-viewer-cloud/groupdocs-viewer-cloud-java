@@ -41,9 +41,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The CAD documents rendering options.
+ * The CAD documents rendering options. Rendering of CAD file formats is not supported at the moment.
  */
-@ApiModel(description = "The CAD documents rendering options.")
+@ApiModel(description = "The CAD documents rendering options. Rendering of CAD file formats is not supported at the moment.")
 public class CadOptions {
   @SerializedName("scaleFactor")
   private Double scaleFactor = null;
@@ -75,7 +75,7 @@ public class CadOptions {
    * The scale factor affects the size of an output document.        
    * @return scaleFactor
   **/
-  @ApiModelProperty(required = true, value = "The scale factor affects the size of an output document.        ")
+  @ApiModelProperty(value = "The scale factor affects the size of an output document.        ")
   public Double getScaleFactor() {
     return scaleFactor;
   }
@@ -93,7 +93,7 @@ public class CadOptions {
    * The width of the render result in pixels.        
    * @return width
   **/
-  @ApiModelProperty(required = true, value = "The width of the render result in pixels.        ")
+  @ApiModelProperty(value = "The width of the render result in pixels.        ")
   public Integer getWidth() {
     return width;
   }
@@ -111,7 +111,7 @@ public class CadOptions {
    * The height of the render result in pixels.        
    * @return height
   **/
-  @ApiModelProperty(required = true, value = "The height of the render result in pixels.        ")
+  @ApiModelProperty(value = "The height of the render result in pixels.        ")
   public Integer getHeight() {
     return height;
   }
@@ -129,8 +129,8 @@ public class CadOptions {
    * Indicates whether layouts from CAD document should be rendered.
    * @return renderLayouts
   **/
-  @ApiModelProperty(required = true, value = "Indicates whether layouts from CAD document should be rendered.")
-  public Boolean isRenderLayouts() {
+  @ApiModelProperty(value = "Indicates whether layouts from CAD document should be rendered.")
+  public Boolean isisRenderLayouts() {
     return renderLayouts;
   }
 

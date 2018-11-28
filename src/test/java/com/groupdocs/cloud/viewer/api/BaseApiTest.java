@@ -31,7 +31,6 @@ public class BaseApiTest {
         configuration.setApiBaseUrl(Config.ApiBaseUrl);
 
         viewerApi = new ViewerApi(configuration);
-        viewerApi.getApiClient().setConnectTimeout(10 * 1000);
 
         storageApi = new StorageApi(Config.ApiBaseUrl+ "/v1", Config.AppKey, Config.AppSID);
     }

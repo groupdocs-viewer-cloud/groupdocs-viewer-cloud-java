@@ -10,7 +10,9 @@ import java.io.IOException;
 import com.groupdocs.cloud.viewer.client.ApiException;
 import com.groupdocs.cloud.viewer.model.HtmlOptions;
 import com.groupdocs.cloud.viewer.model.HtmlPageCollection;
+import com.groupdocs.cloud.viewer.model.OutlookOptions;
 import com.groupdocs.cloud.viewer.model.PageInfoCollection;
+import com.groupdocs.cloud.viewer.model.ProjectOptions;
 import com.groupdocs.cloud.viewer.model.ReorderOptions;
 import com.groupdocs.cloud.viewer.model.RotateOptions;
 import com.groupdocs.cloud.viewer.model.requests.HtmlCreatePagesCacheFromContentRequest;
@@ -22,6 +24,7 @@ import com.groupdocs.cloud.viewer.model.requests.HtmlGetPagesFromUrlRequest;
 import com.groupdocs.cloud.viewer.model.requests.HtmlGetPagesRequest;
 import com.groupdocs.cloud.viewer.model.requests.HtmlGetZipWithPagesRequest;
 import com.groupdocs.cloud.viewer.model.requests.HtmlTransformPagesRequest;
+import org.threeten.bp.OffsetDateTime;
 
 import org.junit.Test;
 
@@ -348,4 +351,68 @@ public class HtmlPagesApiTests extends BaseApiTest {
 
         viewerApi.htmlDeletePagesCache(request);
     }
+
+    /**
+     * Creates document pages as HTML and saves them in cache. Use ProjectOptions
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void htmlCreatePagesCacheWithProjectOptionsTest() throws ApiException {
+        TestFile file = TestFiles.ProjectMpp;
+
+        HtmlOptions options = new HtmlOptions();
+        options.setEmbedResources(true);
+
+        ProjectOptions projectOptions = new ProjectOptions();
+        projectOptions.setTimeUnit("Days");
+        projectOptions.setStartDate(OffsetDateTime.parse("2008-07-01T00:00:00Z"));
+        projectOptions.setEndDate(OffsetDateTime.parse("2008-07-31T00:00:00Z"));
+        
+        options.setProjectOptions(projectOptions);
+
+        HtmlCreatePagesCacheRequest request = new HtmlCreatePagesCacheRequest();
+        request.setFileName(file.getFileName());
+        request.setHtmlOptions(options);
+        request.setFontsFolder(null);
+        request.setFolder(file.getFolder());
+        request.setStorage(null);
+
+        HtmlPageCollection response = viewerApi.htmlCreatePagesCache(request);
+
+        assertEquals(file.getFileName(), response.getFileName());
+        assertEquals(file.getFolder(), response.getFolder());
+        assertEquals(1, response.getPages().size());
+    }  
+    
+    /**
+     * Creates document pages as HTML and saves them in cache. Use OutlookOptions
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void htmlCreatePagesCacheWithOutlookOptionsTest() throws ApiException {
+        TestFile file = TestFiles.OutlookPst;
+
+        HtmlOptions options = new HtmlOptions();
+        options.setEmbedResources(true);
+
+        OutlookOptions outlookOptions = new OutlookOptions();
+        outlookOptions.setMaxItemsInFolder(5);
+        
+        options.setOutlookOptions(outlookOptions);
+
+        HtmlCreatePagesCacheRequest request = new HtmlCreatePagesCacheRequest();
+        request.setFileName(file.getFileName());
+        request.setHtmlOptions(options);
+        request.setFontsFolder(null);
+        request.setFolder(file.getFolder());
+        request.setStorage(null);
+
+        HtmlPageCollection response = viewerApi.htmlCreatePagesCache(request);
+
+        assertEquals(file.getFileName(), response.getFileName());
+        assertEquals(file.getFolder(), response.getFolder());
+        assertTrue("Ensure Pages count > 0", response.getPages().size() > 0);
+    }    
 }

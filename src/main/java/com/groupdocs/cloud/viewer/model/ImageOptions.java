@@ -36,6 +36,7 @@ import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.viewer.model.CadOptions;
 import com.groupdocs.cloud.viewer.model.CellsOptions;
 import com.groupdocs.cloud.viewer.model.EmailOptions;
+import com.groupdocs.cloud.viewer.model.OutlookOptions;
 import com.groupdocs.cloud.viewer.model.PdfOptions;
 import com.groupdocs.cloud.viewer.model.ProjectOptions;
 import com.groupdocs.cloud.viewer.model.RenderOptions;

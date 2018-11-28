@@ -54,8 +54,8 @@ public class SlidesOptions {
    * Indicates whether slide notes should be rendered.
    * @return renderNotes
   **/
-  @ApiModelProperty(required = true, value = "Indicates whether slide notes should be rendered.")
-  public Boolean isRenderNotes() {
+  @ApiModelProperty(value = "Indicates whether slide notes should be rendered.")
+  public Boolean isisRenderNotes() {
     return renderNotes;
   }
 

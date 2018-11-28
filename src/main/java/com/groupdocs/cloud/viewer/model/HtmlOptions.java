@@ -36,6 +36,7 @@ import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.viewer.model.CadOptions;
 import com.groupdocs.cloud.viewer.model.CellsOptions;
 import com.groupdocs.cloud.viewer.model.EmailOptions;
+import com.groupdocs.cloud.viewer.model.OutlookOptions;
 import com.groupdocs.cloud.viewer.model.PdfOptions;
 import com.groupdocs.cloud.viewer.model.ProjectOptions;
 import com.groupdocs.cloud.viewer.model.RenderOptions;
@@ -45,6 +46,7 @@ import com.groupdocs.cloud.viewer.model.WordsOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,6 +71,9 @@ public class HtmlOptions extends RenderOptions {
 
   @SerializedName("excludeFonts")
   private Boolean excludeFonts = null;
+
+  @SerializedName("excludeFontsList")
+  private List<String> excludeFontsList = null;
 
   public HtmlOptions resourcePath(String resourcePath) {
     this.resourcePath = resourcePath;
@@ -98,7 +103,7 @@ public class HtmlOptions extends RenderOptions {
    * @return ignoreResourcePathInResources
   **/
   @ApiModelProperty(value = "Allows to ignore ResourcePath when processing *.css files.  When this options is enabled ResourcePath won't be added to resource references in *.css file.")
-  public Boolean isIgnoreResourcePathInResources() {
+  public Boolean isisIgnoreResourcePathInResources() {
     return ignoreResourcePathInResources;
   }
 
@@ -116,7 +121,7 @@ public class HtmlOptions extends RenderOptions {
    * @return embedResources
   **/
   @ApiModelProperty(value = "Controls output HTML document resources (styles, images and fonts) saving. When this options set to true all resources will be embedded into HTML document and ResourcePath option value will be ignored.")
-  public Boolean isEmbedResources() {
+  public Boolean isisEmbedResources() {
     return embedResources;
   }
 
@@ -134,7 +139,7 @@ public class HtmlOptions extends RenderOptions {
    * @return enableMinification
   **/
   @ApiModelProperty(value = "Enables content (HTML, CSS and SVG) minification.")
-  public Boolean isEnableMinification() {
+  public Boolean isisEnableMinification() {
     return enableMinification;
   }
 
@@ -152,7 +157,7 @@ public class HtmlOptions extends RenderOptions {
    * @return enableResponsiveRendering
   **/
   @ApiModelProperty(value = "Indicates whether rendering will provide responsive web pages, that look well on different device types.")
-  public Boolean isEnableResponsiveRendering() {
+  public Boolean isisEnableResponsiveRendering() {
     return enableResponsiveRendering;
   }
 
@@ -170,12 +175,38 @@ public class HtmlOptions extends RenderOptions {
    * @return excludeFonts
   **/
   @ApiModelProperty(value = "Prevents adding fonts to the output HTML document.  ")
-  public Boolean isExcludeFonts() {
+  public Boolean isisExcludeFonts() {
     return excludeFonts;
   }
 
   public void setExcludeFonts(Boolean excludeFonts) {
     this.excludeFonts = excludeFonts;
+  }
+
+  public HtmlOptions excludeFontsList(List<String> excludeFontsList) {
+    this.excludeFontsList = excludeFontsList;
+    return this;
+  }
+
+  public HtmlOptions addExcludeFontsListItem(String excludeFontsListItem) {
+    if (this.excludeFontsList == null) {
+      this.excludeFontsList = new ArrayList<String>();
+    }
+    this.excludeFontsList.add(excludeFontsListItem);
+    return this;
+  }
+
+   /**
+   * The list of font names, that will be excluded from HTML.
+   * @return excludeFontsList
+  **/
+  @ApiModelProperty(value = "The list of font names, that will be excluded from HTML.")
+  public List<String> getExcludeFontsList() {
+    return excludeFontsList;
+  }
+
+  public void setExcludeFontsList(List<String> excludeFontsList) {
+    this.excludeFontsList = excludeFontsList;
   }
 
 
@@ -194,12 +225,13 @@ public class HtmlOptions extends RenderOptions {
         Objects.equals(this.enableMinification, htmlOptions.enableMinification) &&
         Objects.equals(this.enableResponsiveRendering, htmlOptions.enableResponsiveRendering) &&
         Objects.equals(this.excludeFonts, htmlOptions.excludeFonts) &&
+        Objects.equals(this.excludeFontsList, htmlOptions.excludeFontsList) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourcePath, ignoreResourcePathInResources, embedResources, enableMinification, enableResponsiveRendering, excludeFonts, super.hashCode());
+    return Objects.hash(resourcePath, ignoreResourcePathInResources, embedResources, enableMinification, enableResponsiveRendering, excludeFonts, excludeFontsList, super.hashCode());
   }
 
 
@@ -214,6 +246,7 @@ public class HtmlOptions extends RenderOptions {
     sb.append("    enableMinification: ").append(toIndentedString(enableMinification)).append("\n");
     sb.append("    enableResponsiveRendering: ").append(toIndentedString(enableResponsiveRendering)).append("\n");
     sb.append("    excludeFonts: ").append(toIndentedString(excludeFonts)).append("\n");
+    sb.append("    excludeFontsList: ").append(toIndentedString(excludeFontsList)).append("\n");
     sb.append("}");
     return sb.toString();
   }

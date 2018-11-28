@@ -75,8 +75,8 @@ public class WordsOptions {
    * Indicates whether Tracked Changes (Revisions) should be rendered or not.
    * @return renderTrackedChanges
   **/
-  @ApiModelProperty(required = true, value = "Indicates whether Tracked Changes (Revisions) should be rendered or not.")
-  public Boolean isRenderTrackedChanges() {
+  @ApiModelProperty(value = "Indicates whether Tracked Changes (Revisions) should be rendered or not.")
+  public Boolean isisRenderTrackedChanges() {
     return renderTrackedChanges;
   }
 

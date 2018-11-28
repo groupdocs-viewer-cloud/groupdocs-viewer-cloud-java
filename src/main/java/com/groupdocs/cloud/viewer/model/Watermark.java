@@ -117,7 +117,7 @@ public class Watermark {
    * Watermark size in percents. Default value is 100.
    * @return size
   **/
-  @ApiModelProperty(required = true, value = "Watermark size in percents. Default value is 100.")
+  @ApiModelProperty(value = "Watermark size in percents. Default value is 100.")
   public Integer getSize() {
     return size;
   }

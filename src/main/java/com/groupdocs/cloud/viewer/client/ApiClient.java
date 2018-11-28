@@ -63,6 +63,7 @@ import java.util.regex.Pattern;
 import com.groupdocs.cloud.viewer.client.auth.Authentication;
 import com.groupdocs.cloud.viewer.client.auth.OAuth;
 import com.groupdocs.cloud.viewer.model.ApiError;
+import com.groupdocs.cloud.viewer.model.AuthError;
 
 public class ApiClient {
     private Configuration configuration = null;
@@ -96,10 +97,13 @@ public class ApiClient {
         this.json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("java-sdk/18.7");
+        setUserAgent("java-sdk/18.11");
 
         // Set connection timeout
         setConnectTimeout(configuration.getTimeout());
+        
+        // Set read timeout
+        setReadTimeout(configuration.getTimeout());
 
         // Setup authentications (key: authentication name, value: authentication).
         this.authentications = new HashMap<String, Authentication>();
@@ -112,7 +116,7 @@ public class ApiClient {
     }
 
     /**
-     * Get server URL, default value is https://api.groupdocs.cloud/v1
+     * Get server URL, default value is http://api.groupdocs.cloud/v1
      *
      * @return Server URL
      */
@@ -657,10 +661,8 @@ public class ApiClient {
             return (T) respBody;
         } else {
             throw new ApiException(
-                    "Content type \"" + contentType + "\" is not supported for type: " + returnType,
-                    response.code(),
-                    response.headers().toMultimap(),
-                    respBody);
+                "Content type \"" + contentType + "\" is not supported for type: " + returnType,
+                response.code());
         }
     }
 
@@ -849,7 +851,7 @@ public class ApiClient {
                     try {
                         response.body().close();
                     } catch (IOException e) {
-                        throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
+                        throw new ApiException(response.message(), response.code());
                     }
                 }
                 return null;
@@ -857,20 +859,37 @@ public class ApiClient {
                 return deserialize(response, returnType);
             }
         } else {
-            String respBody = null;
-            ApiError apiError = null;
             if (response.body() != null) {
+                String respBody;
+    
                 try {
-                    apiError = deserialize(response, ApiError.class);
-                } catch (ApiException e) {
-                    throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
+                  respBody = response.body().string();
+                } catch (Exception e) {
+                  throw new ApiException(response.message(), response.code());
                 }
-
-                if(apiError != null && apiError.getError() != null){
-                    throw new ApiException(apiError.getError().getMessage(), response.code(), response.headers().toMultimap(), respBody);
-                }            
-            }
-            throw new ApiException(response.message(), response.code(), response.headers().toMultimap(), respBody);
+    
+                ApiError apiError = null;
+                try {
+                  apiError = json.deserialize(respBody, ApiError.class);
+                } catch (Exception e) {
+                  //NOTE: ignore
+                }
+                if(apiError != null && apiError.getError() != null) {
+                  throw new ApiException(apiError.getError().getMessage(), response.code());
+                }   
+                
+                AuthError authError = null;
+                try {
+                  authError = json.deserialize(respBody, AuthError.class);
+                } catch (Exception e) {
+                  //NOTE: ignore
+                }
+                if(authError != null && authError.getErrorMessage() != null) {
+                  throw new ApiException(authError.getErrorMessage(), response.code());
+                }
+              }
+    
+              throw new ApiException(response.message(), response.code());
         }
     }
 

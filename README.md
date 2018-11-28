@@ -37,7 +37,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-viewer-cloud</artifactId>
-    <version>18.7</version>
+    <version>18.11</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/groupdocs-viewer-cloud-18.7.jar
+* target/groupdocs-viewer-cloud-18.11.jar
 * target/lib/*.jar
 
 ## Getting Started

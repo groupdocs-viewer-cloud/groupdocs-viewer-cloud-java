@@ -81,8 +81,8 @@ public class CellsOptions {
    * Indicates whether to render grid lines.
    * @return renderGridLines
   **/
-  @ApiModelProperty(required = true, value = "Indicates whether to render grid lines.")
-  public Boolean isRenderGridLines() {
+  @ApiModelProperty(value = "Indicates whether to render grid lines.")
+  public Boolean isisRenderGridLines() {
     return renderGridLines;
   }
 
@@ -99,8 +99,8 @@ public class CellsOptions {
    * Allows to enable worksheets pagination. By default one worksheet is rendered into one page.
    * @return paginateSheets
   **/
-  @ApiModelProperty(required = true, value = "Allows to enable worksheets pagination. By default one worksheet is rendered into one page.")
-  public Boolean isPaginateSheets() {
+  @ApiModelProperty(value = "Allows to enable worksheets pagination. By default one worksheet is rendered into one page.")
+  public Boolean isisPaginateSheets() {
     return paginateSheets;
   }
 
@@ -117,7 +117,7 @@ public class CellsOptions {
    * The number of rows rendered into one page when PaginateSheets &#x3D; true. Default value is 50.
    * @return countRowsPerPage
   **/
-  @ApiModelProperty(required = true, value = "The number of rows rendered into one page when PaginateSheets = true. Default value is 50.")
+  @ApiModelProperty(value = "The number of rows rendered into one page when PaginateSheets = true. Default value is 50.")
   public Integer getCountRowsPerPage() {
     return countRowsPerPage;
   }
@@ -135,8 +135,8 @@ public class CellsOptions {
    * Indicates whether empty rows should be ignored.
    * @return ignoreEmptyRows
   **/
-  @ApiModelProperty(required = true, value = "Indicates whether empty rows should be ignored.")
-  public Boolean isIgnoreEmptyRows() {
+  @ApiModelProperty(value = "Indicates whether empty rows should be ignored.")
+  public Boolean isisIgnoreEmptyRows() {
     return ignoreEmptyRows;
   }
 
@@ -207,8 +207,8 @@ public class CellsOptions {
    * Enables rendering of hidden rows.
    * @return renderHiddenRows
   **/
-  @ApiModelProperty(required = true, value = "Enables rendering of hidden rows.")
-  public Boolean isRenderHiddenRows() {
+  @ApiModelProperty(value = "Enables rendering of hidden rows.")
+  public Boolean isisRenderHiddenRows() {
     return renderHiddenRows;
   }
 
@@ -225,8 +225,8 @@ public class CellsOptions {
    * Enables rendering of hidden columns.
    * @return renderHiddenColumns
   **/
-  @ApiModelProperty(required = true, value = "Enables rendering of hidden columns.")
-  public Boolean isRenderHiddenColumns() {
+  @ApiModelProperty(value = "Enables rendering of hidden columns.")
+  public Boolean isisRenderHiddenColumns() {
     return renderHiddenColumns;
   }
 
@@ -243,8 +243,8 @@ public class CellsOptions {
    * Enables rendering worksheet(s) sections which is defined as print area. Renders each print area in a worksheet as a separate page.
    * @return renderPrintAreaOnly
   **/
-  @ApiModelProperty(required = true, value = "Enables rendering worksheet(s) sections which is defined as print area. Renders each print area in a worksheet as a separate page.")
-  public Boolean isRenderPrintAreaOnly() {
+  @ApiModelProperty(value = "Enables rendering worksheet(s) sections which is defined as print area. Renders each print area in a worksheet as a separate page.")
+  public Boolean isisRenderPrintAreaOnly() {
     return renderPrintAreaOnly;
   }
 

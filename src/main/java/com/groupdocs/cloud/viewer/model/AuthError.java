@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="DocumentInfoOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="AuthError.java">
  *   Copyright (c) 2003-2018 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,24 +28,37 @@
 package com.groupdocs.cloud.viewer.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.viewer.model.CadOptions;
-import com.groupdocs.cloud.viewer.model.CellsOptions;
-import com.groupdocs.cloud.viewer.model.EmailOptions;
-import com.groupdocs.cloud.viewer.model.OutlookOptions;
-import com.groupdocs.cloud.viewer.model.PdfOptions;
-import com.groupdocs.cloud.viewer.model.ProjectOptions;
-import com.groupdocs.cloud.viewer.model.RenderOptionsBase;
-import com.groupdocs.cloud.viewer.model.SlidesOptions;
-import com.groupdocs.cloud.viewer.model.Watermark;
-import com.groupdocs.cloud.viewer.model.WordsOptions;
+
+import com.google.gson.annotations.SerializedName;
+
 import io.swagger.annotations.ApiModel;
-import java.util.List;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Provides options for retrieving document information.
+ * Describes Auth error.
  */
-@ApiModel(description = "Provides options for retrieving document information.")
-public class DocumentInfoOptions extends RenderOptionsBase {
+@ApiModel(description = "Describes Auth error.")
+public class AuthError {
+  @SerializedName("error_description")
+  private String errorMessage = null;
+
+  public AuthError error(String errorMessage) {
+    this.errorMessage = errorMessage;
+    return this;
+  }
+
+  /**
+   * The Auth error.
+   * @return error message
+  **/
+  @ApiModelProperty(value = "The Auth error.")
+  public String getErrorMessage() {
+    return errorMessage;
+  }
+
+  public void setErrorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -55,7 +68,8 @@ public class DocumentInfoOptions extends RenderOptionsBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    AuthError error = (AuthError) o;
+    return Objects.equals(this.errorMessage, error.errorMessage) ;
   }
 
   @Override
@@ -63,12 +77,12 @@ public class DocumentInfoOptions extends RenderOptionsBase {
     return Objects.hash(super.hashCode());
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentInfoOptions {\n");
+    sb.append("class AuthError {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -83,6 +97,4 @@ public class DocumentInfoOptions extends RenderOptionsBase {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
 }
-

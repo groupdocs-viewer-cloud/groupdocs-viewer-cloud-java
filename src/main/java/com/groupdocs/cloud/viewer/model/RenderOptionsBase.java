@@ -36,6 +36,7 @@ import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.viewer.model.CadOptions;
 import com.groupdocs.cloud.viewer.model.CellsOptions;
 import com.groupdocs.cloud.viewer.model.EmailOptions;
+import com.groupdocs.cloud.viewer.model.OutlookOptions;
 import com.groupdocs.cloud.viewer.model.PdfOptions;
 import com.groupdocs.cloud.viewer.model.ProjectOptions;
 import com.groupdocs.cloud.viewer.model.SlidesOptions;
@@ -97,6 +98,9 @@ public class RenderOptionsBase {
   @SerializedName("projectOptions")
   private ProjectOptions projectOptions = null;
 
+  @SerializedName("outlookOptions")
+  private OutlookOptions outlookOptions = null;
+
   public RenderOptionsBase password(String password) {
     this.password = password;
     return this;
@@ -142,8 +146,8 @@ public class RenderOptionsBase {
    * Enables document text extraction. For rendering document as image only.
    * @return extractText
   **/
-  @ApiModelProperty(required = true, value = "Enables document text extraction. For rendering document as image only.")
-  public Boolean isExtractText() {
+  @ApiModelProperty(value = "Enables document text extraction. For rendering document as image only.")
+  public Boolean isisExtractText() {
     return extractText;
   }
 
@@ -160,8 +164,8 @@ public class RenderOptionsBase {
    * Enables document comments rendering.
    * @return renderComments
   **/
-  @ApiModelProperty(required = true, value = "Enables document comments rendering.")
-  public Boolean isRenderComments() {
+  @ApiModelProperty(value = "Enables document comments rendering.")
+  public Boolean isisRenderComments() {
     return renderComments;
   }
 
@@ -178,8 +182,8 @@ public class RenderOptionsBase {
    * Enables rendering of document hidden pages, sheets or slides.
    * @return renderHiddenPages
   **/
-  @ApiModelProperty(required = true, value = "Enables rendering of document hidden pages, sheets or slides.")
-  public Boolean isRenderHiddenPages() {
+  @ApiModelProperty(value = "Enables rendering of document hidden pages, sheets or slides.")
+  public Boolean isisRenderHiddenPages() {
     return renderHiddenPages;
   }
 
@@ -375,6 +379,24 @@ public class RenderOptionsBase {
     this.projectOptions = projectOptions;
   }
 
+  public RenderOptionsBase outlookOptions(OutlookOptions outlookOptions) {
+    this.outlookOptions = outlookOptions;
+    return this;
+  }
+
+   /**
+   * The Outlook Data File document (PST/OST) rendering options.
+   * @return outlookOptions
+  **/
+  @ApiModelProperty(value = "The Outlook Data File document (PST/OST) rendering options.")
+  public OutlookOptions getOutlookOptions() {
+    return outlookOptions;
+  }
+
+  public void setOutlookOptions(OutlookOptions outlookOptions) {
+    this.outlookOptions = outlookOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -399,12 +421,13 @@ public class RenderOptionsBase {
         Objects.equals(this.wordsOptions, renderOptionsBase.wordsOptions) &&
         Objects.equals(this.pdfOptions, renderOptionsBase.pdfOptions) &&
         Objects.equals(this.slidesOptions, renderOptionsBase.slidesOptions) &&
-        Objects.equals(this.projectOptions, renderOptionsBase.projectOptions);
+        Objects.equals(this.projectOptions, renderOptionsBase.projectOptions) &&
+        Objects.equals(this.outlookOptions, renderOptionsBase.outlookOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, attachmentPassword, extractText, renderComments, renderHiddenPages, transforms, defaultFontName, watermark, cellsOptions, cadOptions, emailOptions, wordsOptions, pdfOptions, slidesOptions, projectOptions);
+    return Objects.hash(password, attachmentPassword, extractText, renderComments, renderHiddenPages, transforms, defaultFontName, watermark, cellsOptions, cadOptions, emailOptions, wordsOptions, pdfOptions, slidesOptions, projectOptions, outlookOptions);
   }
 
 
@@ -428,6 +451,7 @@ public class RenderOptionsBase {
     sb.append("    pdfOptions: ").append(toIndentedString(pdfOptions)).append("\n");
     sb.append("    slidesOptions: ").append(toIndentedString(slidesOptions)).append("\n");
     sb.append("    projectOptions: ").append(toIndentedString(projectOptions)).append("\n");
+    sb.append("    outlookOptions: ").append(toIndentedString(outlookOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

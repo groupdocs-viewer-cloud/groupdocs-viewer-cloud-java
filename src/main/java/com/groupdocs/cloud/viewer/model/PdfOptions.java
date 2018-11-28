@@ -63,8 +63,8 @@ public class PdfOptions {
    * Indicates whether the PDF document is rendered in a precise mode or not. It is recommended to enable this option when rendering documents with complex content e.g. documents which contains hieroglyphs or any kind o glyphs which should be rendered separately from each other.
    * @return enablePreciseRendering
   **/
-  @ApiModelProperty(required = true, value = "Indicates whether the PDF document is rendered in a precise mode or not. It is recommended to enable this option when rendering documents with complex content e.g. documents which contains hieroglyphs or any kind o glyphs which should be rendered separately from each other.")
-  public Boolean isEnablePreciseRendering() {
+  @ApiModelProperty(value = "Indicates whether the PDF document is rendered in a precise mode or not. It is recommended to enable this option when rendering documents with complex content e.g. documents which contains hieroglyphs or any kind o glyphs which should be rendered separately from each other.")
+  public Boolean isisEnablePreciseRendering() {
     return enablePreciseRendering;
   }
 
@@ -81,8 +81,8 @@ public class PdfOptions {
    * When this option is enabled content (graphics and text) will be added to HTML document accordingly Z-order in original PDF document. When this option is disabled content (graphics and text) will be added to a single layer.
    * @return enableInitialContentOrdering
   **/
-  @ApiModelProperty(required = true, value = "When this option is enabled content (graphics and text) will be added to HTML document accordingly Z-order in original PDF document. When this option is disabled content (graphics and text) will be added to a single layer.")
-  public Boolean isEnableInitialContentOrdering() {
+  @ApiModelProperty(value = "When this option is enabled content (graphics and text) will be added to HTML document accordingly Z-order in original PDF document. When this option is disabled content (graphics and text) will be added to a single layer.")
+  public Boolean isisEnableInitialContentOrdering() {
     return enableInitialContentOrdering;
   }
 
@@ -99,8 +99,8 @@ public class PdfOptions {
    * When this option is enabled layers will be separated from each other in the HTML document.
    * @return renderLayersSeparately
   **/
-  @ApiModelProperty(required = true, value = "When this option is enabled layers will be separated from each other in the HTML document.")
-  public Boolean isRenderLayersSeparately() {
+  @ApiModelProperty(value = "When this option is enabled layers will be separated from each other in the HTML document.")
+  public Boolean isisRenderLayersSeparately() {
     return renderLayersSeparately;
   }
 

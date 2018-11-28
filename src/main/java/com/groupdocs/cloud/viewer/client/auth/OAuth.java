@@ -34,7 +34,6 @@ import com.groupdocs.cloud.viewer.client.Pair;
 import com.squareup.okhttp.*;
 import com.squareup.okhttp.OkHttpClient;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
@@ -42,6 +41,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.Map;
 import java.util.List;
+
+import com.groupdocs.cloud.viewer.model.ApiError;
+import com.groupdocs.cloud.viewer.model.AuthError;
 
 
 public class OAuth implements Authentication {
@@ -161,7 +163,7 @@ public class OAuth implements Authentication {
                   try {
                       response.body().close();
                   } catch (IOException e) {
-                      throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
+                      throw new ApiException(response.message(), response.code());
                   }
               }
               return null;
@@ -169,15 +171,37 @@ public class OAuth implements Authentication {
               return deserialize(response);
           }
       } else {
-          String respBody = null;
-          if (response.body() != null) {
-              try {
-                  respBody = response.body().string();
-              } catch (IOException e) {
-                  throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
-              }
+         if (response.body() != null) {
+            String respBody;
+
+            try {
+              respBody = response.body().string();
+            } catch (Exception e) {
+              throw new ApiException(response.message(), response.code());
+            }
+
+            ApiError apiError = null;
+            try {
+              apiError = json.deserialize(respBody, ApiError.class);
+            } catch (Exception e) {
+              //NOTE: ignore
+            }
+            if(apiError != null && apiError.getError() != null) {
+              throw new ApiException(apiError.getError().getMessage(), response.code());
+            }   
+            
+            AuthError authError = null;
+            try {
+              authError = json.deserialize(respBody, AuthError.class);
+            } catch (Exception e) {
+              //NOTE: ignore
+            }
+            if(authError != null && authError.getErrorMessage() != null) {
+              throw new ApiException(authError.getErrorMessage(), response.code());
+            }
           }
-          throw new ApiException(response.message(), response.code(), response.headers().toMultimap(), respBody);
+
+          throw new ApiException(response.message(), response.code());
       }
   }
 

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="DocumentInfoOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="OutlookOptions.java">
  *   Copyright (c) 2003-2018 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,24 +28,41 @@
 package com.groupdocs.cloud.viewer.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.viewer.model.CadOptions;
-import com.groupdocs.cloud.viewer.model.CellsOptions;
-import com.groupdocs.cloud.viewer.model.EmailOptions;
-import com.groupdocs.cloud.viewer.model.OutlookOptions;
-import com.groupdocs.cloud.viewer.model.PdfOptions;
-import com.groupdocs.cloud.viewer.model.ProjectOptions;
-import com.groupdocs.cloud.viewer.model.RenderOptionsBase;
-import com.groupdocs.cloud.viewer.model.SlidesOptions;
-import com.groupdocs.cloud.viewer.model.Watermark;
-import com.groupdocs.cloud.viewer.model.WordsOptions;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
-import java.util.List;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
- * Provides options for retrieving document information.
+ * The Outlook data files rendering options.
  */
-@ApiModel(description = "Provides options for retrieving document information.")
-public class DocumentInfoOptions extends RenderOptionsBase {
+@ApiModel(description = "The Outlook data files rendering options.")
+public class OutlookOptions {
+  @SerializedName("maxItemsInFolder")
+  private Integer maxItemsInFolder = null;
+
+  public OutlookOptions maxItemsInFolder(Integer maxItemsInFolder) {
+    this.maxItemsInFolder = maxItemsInFolder;
+    return this;
+  }
+
+   /**
+   * The limit of items to render in mailbox folders
+   * @return maxItemsInFolder
+  **/
+  @ApiModelProperty(value = "The limit of items to render in mailbox folders")
+  public Integer getMaxItemsInFolder() {
+    return maxItemsInFolder;
+  }
+
+  public void setMaxItemsInFolder(Integer maxItemsInFolder) {
+    this.maxItemsInFolder = maxItemsInFolder;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -55,20 +72,22 @@ public class DocumentInfoOptions extends RenderOptionsBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    OutlookOptions outlookOptions = (OutlookOptions) o;
+    return Objects.equals(this.maxItemsInFolder, outlookOptions.maxItemsInFolder);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(maxItemsInFolder);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentInfoOptions {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class OutlookOptions {\n");
+    
+    sb.append("    maxItemsInFolder: ").append(toIndentedString(maxItemsInFolder)).append("\n");
     sb.append("}");
     return sb.toString();
   }

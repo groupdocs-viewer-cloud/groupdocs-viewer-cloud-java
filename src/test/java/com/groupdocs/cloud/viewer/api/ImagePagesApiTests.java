@@ -342,4 +342,30 @@ public class ImagePagesApiTests extends BaseApiTest {
 
         viewerApi.imageDeletePagesCache(request);
     }
+
+    /**
+     * Creates pages as image and saves them in cache for supported formats
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void ImageCreatePagesCacheForFileFormatsTest() throws ApiException {
+        for (TestFile file : TestFiles.GetSupported())
+        {
+            ImageCreatePagesCacheRequest request = new ImageCreatePagesCacheRequest();
+            request.setFileName(file.getFileName());
+            request.setFolder(file.getFolder());
+            request.setStorage(null);
+            ImageOptions imageOptions = new ImageOptions();
+            imageOptions.setFormat("jpg");
+            request.setImageOptions(imageOptions);
+
+            ImagePageCollection response = viewerApi.imageCreatePagesCache(request);
+
+            assertEquals(1, response.getPages().size());
+            assertEquals(file.getFileName(), response.getFileName());
+            assertEquals(file.getFolder(), response.getFolder());
+            assertTrue("Ensure Pages count > 0", response.getPages().size() > 0);
+        }
+    }    
 }

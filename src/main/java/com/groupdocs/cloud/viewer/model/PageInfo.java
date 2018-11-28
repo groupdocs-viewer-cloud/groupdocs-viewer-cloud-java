@@ -75,7 +75,7 @@ public class PageInfo {
    * Page number.
    * @return number
   **/
-  @ApiModelProperty(required = true, value = "Page number.")
+  @ApiModelProperty(value = "Page number.")
   public Integer getNumber() {
     return number;
   }
@@ -111,7 +111,7 @@ public class PageInfo {
    * Page width.
    * @return width
   **/
-  @ApiModelProperty(required = true, value = "Page width.")
+  @ApiModelProperty(value = "Page width.")
   public Integer getWidth() {
     return width;
   }
@@ -129,7 +129,7 @@ public class PageInfo {
    * Page height.
    * @return height
   **/
-  @ApiModelProperty(required = true, value = "Page height.")
+  @ApiModelProperty(value = "Page height.")
   public Integer getHeight() {
     return height;
   }
@@ -147,7 +147,7 @@ public class PageInfo {
    * Page angle.
    * @return angle
   **/
-  @ApiModelProperty(required = true, value = "Page angle.")
+  @ApiModelProperty(value = "Page angle.")
   public Integer getAngle() {
     return angle;
   }
@@ -165,8 +165,8 @@ public class PageInfo {
    * Page visibility.
    * @return visible
   **/
-  @ApiModelProperty(required = true, value = "Page visibility.")
-  public Boolean isVisible() {
+  @ApiModelProperty(value = "Page visibility.")
+  public Boolean isisVisible() {
     return visible;
   }
 

@@ -27,59 +27,53 @@
 
 package com.groupdocs.cloud.viewer.api;
 
-import com.groupdocs.cloud.viewer.client.ApiCallback;
-import com.groupdocs.cloud.viewer.client.ApiClient;
-import com.groupdocs.cloud.viewer.client.ApiException;
-import com.groupdocs.cloud.viewer.client.ApiResponse;
-import com.groupdocs.cloud.viewer.client.Configuration;
-import com.groupdocs.cloud.viewer.client.Pair;
-import com.groupdocs.cloud.viewer.client.ProgressRequestBody;
-import com.groupdocs.cloud.viewer.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
-import com.groupdocs.cloud.viewer.model.AttachmentCollection;
-import com.groupdocs.cloud.viewer.model.DocumentInfo;
-import com.groupdocs.cloud.viewer.model.DocumentInfoOptions;
 import java.io.File;
-import com.groupdocs.cloud.viewer.model.FontCollection;
-import com.groupdocs.cloud.viewer.model.FormatCollection;
-import com.groupdocs.cloud.viewer.model.HtmlAttachmentPageCollection;
-import com.groupdocs.cloud.viewer.model.HtmlOptions;
-import com.groupdocs.cloud.viewer.model.HtmlPageCollection;
-import com.groupdocs.cloud.viewer.model.ImageAttachmentPageCollection;
-import com.groupdocs.cloud.viewer.model.ImageOptions;
-import com.groupdocs.cloud.viewer.model.ImagePageCollection;
-import com.groupdocs.cloud.viewer.model.PageInfoCollection;
-import com.groupdocs.cloud.viewer.model.PdfFileInfo;
-import com.groupdocs.cloud.viewer.model.PdfFileOptions;
-import com.groupdocs.cloud.viewer.model.TransformOptionsBase;
-import com.groupdocs.cloud.viewer.model.requests.*;
-
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.reflect.TypeToken;
+import com.groupdocs.cloud.viewer.client.*;
+import com.groupdocs.cloud.viewer.model.*;
+import com.groupdocs.cloud.viewer.model.requests.*;
+
 public class ViewerApi {
     private ApiClient apiClient;
 
+    /**
+     * Initializes new instance of ViewerApi
+     * @param appSid Application identifier (App SID)
+     * @param appKey Application private key (App Key)
+     */
     public ViewerApi(String appSid, String appKey) {
         this(new Configuration(appSid, appKey));
     }
 
+    /**
+     * Initializes new instance of ViewerApi
+     * @param configuration Configuration The configuration
+     */
     public ViewerApi(Configuration configuration) {
         this.apiClient = new ApiClient(configuration);
     }
 
+    /**
+     * Gets ApiClient
+     *
+     * @return ApiClient The Api client
+     */
     public ApiClient getApiClient() {
         return apiClient;
     }
 
+    /**
+     * Sets ApiClient
+     * 
+     * @param apiClient The Api client
+     */
     public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }

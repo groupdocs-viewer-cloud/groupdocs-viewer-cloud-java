@@ -57,7 +57,7 @@ public class TransformOptionsBase {
    * The page number to transform.
    * @return pageNumber
   **/
-  @ApiModelProperty(required = true, value = "The page number to transform.")
+  @ApiModelProperty(value = "The page number to transform.")
   public Integer getPageNumber() {
     return pageNumber;
   }
