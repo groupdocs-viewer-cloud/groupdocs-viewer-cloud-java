@@ -71,7 +71,7 @@ public class ViewerApi {
 
     /**
      * Sets ApiClient
-     * 
+     *
      * @param apiClient The Api client
      */
     public void setApiClient(ApiClient apiClient) {

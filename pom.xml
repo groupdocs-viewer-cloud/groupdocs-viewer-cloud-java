@@ -182,7 +182,7 @@
                             </goals>
                             <configuration>
                               <repositoryId>Groupdocs-Cloud-QA</repositoryId>
-                              <url>http://artifact-qa.groupdocs.cloud/repo</url>
+                              <url>https://repository-qa.groupdocs.cloud/repo</url>
                               <file>target/groupdocs-viewer-cloud-${project.version}.jar</file>
                               <javadoc>target/groupdocs-viewer-cloud-${project.version}-javadoc.jar</javadoc>                              
                               <pomFile>simplified-pom.xml</pomFile>
@@ -197,7 +197,7 @@
               <repository>
                 <id>Groupdocs-Cloud-QA</id>
                 <name>artifactory-cloud-qa</name>
-                <url>http://artifact-qa.groupdocs.cloud/repo</url>
+                <url>https://repository-qa.groupdocs.cloud/repo</url>
               </repository>
             </distributionManagement>
         </profile>  
@@ -263,7 +263,7 @@
                             </goals>
                             <configuration>
                               <repositoryId>Groupdocs-Cloud-PROD</repositoryId>
-                              <url>http://artifact.groupdocs.cloud/repo</url>
+                              <url>https://repository.groupdocs.cloud/repo</url>
                               <file>target/groupdocs-viewer-cloud-${project.version}.jar</file>
                               <javadoc>target/groupdocs-viewer-cloud-${project.version}-javadoc.jar</javadoc>                              
                               <pomFile>simplified-pom.xml</pomFile>
@@ -278,7 +278,7 @@
               <repository>
                 <id>Groupdocs-Cloud-PROD</id>
                 <name>artifactory-cloud-prod</name>
-                <url>http://artifact.groupdocs.cloud/repo</url>
+                <url>https://repository.groupdocs.cloud/repo</url>
               </repository>
             </distributionManagement>
         </profile>     
