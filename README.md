@@ -29,7 +29,7 @@ Add following repository and dependency to your project's POM
 <repository>
     <id>groupdocs-artifact-repository</id>
     <name>GroupDocs Artifact Repository</name>
-    <url>http://artifact.groupdocs.cloud/repo</url>
+    <url>https://repository.groupdocs.cloud/repo</url>
 </repository>
 ```
 
