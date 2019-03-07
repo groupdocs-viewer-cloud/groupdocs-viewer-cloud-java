@@ -215,7 +215,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         viewOptions.setFileInfo(TestFiles.ThreeLayoutsDwf.ToFileInfo());
         RenderOptions renderOptions = new RenderOptions();
         CadOptions cadOptions = new CadOptions();
-        cadOptions.setScaleFactor(5.0);
+        cadOptions.setWidth(800);
         renderOptions.setCadOptions(cadOptions);;
         viewOptions.setRenderOptions(renderOptions);
         CreateViewRequest request = new CreateViewRequest(viewOptions);
