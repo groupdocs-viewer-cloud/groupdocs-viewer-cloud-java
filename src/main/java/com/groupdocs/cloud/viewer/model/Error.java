@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Error.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Describes API error.")
 public class Error {
-  @SerializedName("code")
+  @SerializedName("Code")
   private String code = null;
 
   public Error code(String code) {
@@ -60,7 +60,7 @@ public class Error {
     this.code = code;
   }
 
-  @SerializedName("message")
+  @SerializedName("Message")
   private String message = null;
 
   public Error message(String message) {

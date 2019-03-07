@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="HtmlOptions.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,46 +34,42 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.viewer.model.CadOptions;
-import com.groupdocs.cloud.viewer.model.CellsOptions;
 import com.groupdocs.cloud.viewer.model.EmailOptions;
-import com.groupdocs.cloud.viewer.model.OutlookOptions;
-import com.groupdocs.cloud.viewer.model.PdfOptions;
-import com.groupdocs.cloud.viewer.model.ProjectOptions;
+import com.groupdocs.cloud.viewer.model.ProjectManagementOptions;
 import com.groupdocs.cloud.viewer.model.RenderOptions;
-import com.groupdocs.cloud.viewer.model.SlidesOptions;
-import com.groupdocs.cloud.viewer.model.Watermark;
-import com.groupdocs.cloud.viewer.model.WordsOptions;
+import com.groupdocs.cloud.viewer.model.SpreadsheetOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Provides options for rendering document pages as HTML.
+ * Options for rendering document into HTML
  */
-@ApiModel(description = "Provides options for rendering document pages as HTML.")
+@ApiModel(description = "Options for rendering document into HTML")
 public class HtmlOptions extends RenderOptions {
+  @SerializedName("externalResources")
+  private Boolean externalResources = null;
+
   @SerializedName("resourcePath")
   private String resourcePath = null;
 
-  @SerializedName("ignoreResourcePathInResources")
-  private Boolean ignoreResourcePathInResources = null;
+  public HtmlOptions externalResources(Boolean externalResources) {
+    this.externalResources = externalResources;
+    return this;
+  }
 
-  @SerializedName("embedResources")
-  private Boolean embedResources = null;
+   /**
+   * Controls output HTML document resources (styles, images and fonts) linking. By default this option is disabled and all the resources are embedded into HTML document.
+   * @return externalResources
+  **/
+  @ApiModelProperty(required = true, value = "Controls output HTML document resources (styles, images and fonts) linking. By default this option is disabled and all the resources are embedded into HTML document.")
+  public Boolean getExternalResources() {
+    return externalResources;
+  }
 
-  @SerializedName("enableMinification")
-  private Boolean enableMinification = null;
-
-  @SerializedName("enableResponsiveRendering")
-  private Boolean enableResponsiveRendering = null;
-
-  @SerializedName("excludeFonts")
-  private Boolean excludeFonts = null;
-
-  @SerializedName("excludeFontsList")
-  private List<String> excludeFontsList = null;
+  public void setExternalResources(Boolean externalResources) {
+    this.externalResources = externalResources;
+  }
 
   public HtmlOptions resourcePath(String resourcePath) {
     this.resourcePath = resourcePath;
@@ -81,132 +77,16 @@ public class HtmlOptions extends RenderOptions {
   }
 
    /**
-   * Allows to specify HTML resources (styles, images and fonts) path. For example when resource path is http://example.com/api/pages/{page-number}/resources/{resource-name} the {page-number} and {resource-name} templates will be replaced with page number and resource name accordingly. Ignored when EmbedResources option is set to true.
+   * Path for the HTML resources (styles, images and fonts). For example when resource path is http://example.com/api/pages/{page-number}/resources/{resource-name} the {page-number} and {resource-name} templates will be replaced with page number and resource name accordingly. This option is ignored when ExternalResources option is disabled.
    * @return resourcePath
   **/
-  @ApiModelProperty(value = "Allows to specify HTML resources (styles, images and fonts) path. For example when resource path is http://example.com/api/pages/{page-number}/resources/{resource-name} the {page-number} and {resource-name} templates will be replaced with page number and resource name accordingly. Ignored when EmbedResources option is set to true.")
+  @ApiModelProperty(value = "Path for the HTML resources (styles, images and fonts). For example when resource path is http://example.com/api/pages/{page-number}/resources/{resource-name} the {page-number} and {resource-name} templates will be replaced with page number and resource name accordingly. This option is ignored when ExternalResources option is disabled.")
   public String getResourcePath() {
     return resourcePath;
   }
 
   public void setResourcePath(String resourcePath) {
     this.resourcePath = resourcePath;
-  }
-
-  public HtmlOptions ignoreResourcePathInResources(Boolean ignoreResourcePathInResources) {
-    this.ignoreResourcePathInResources = ignoreResourcePathInResources;
-    return this;
-  }
-
-   /**
-   * Allows to ignore ResourcePath when processing *.css files.  When this options is enabled ResourcePath won&#39;t be added to resource references in *.css file.
-   * @return ignoreResourcePathInResources
-  **/
-  @ApiModelProperty(value = "Allows to ignore ResourcePath when processing *.css files.  When this options is enabled ResourcePath won't be added to resource references in *.css file.")
-  public Boolean isisIgnoreResourcePathInResources() {
-    return ignoreResourcePathInResources;
-  }
-
-  public void setIgnoreResourcePathInResources(Boolean ignoreResourcePathInResources) {
-    this.ignoreResourcePathInResources = ignoreResourcePathInResources;
-  }
-
-  public HtmlOptions embedResources(Boolean embedResources) {
-    this.embedResources = embedResources;
-    return this;
-  }
-
-   /**
-   * Controls output HTML document resources (styles, images and fonts) saving. When this options set to true all resources will be embedded into HTML document and ResourcePath option value will be ignored.
-   * @return embedResources
-  **/
-  @ApiModelProperty(value = "Controls output HTML document resources (styles, images and fonts) saving. When this options set to true all resources will be embedded into HTML document and ResourcePath option value will be ignored.")
-  public Boolean isisEmbedResources() {
-    return embedResources;
-  }
-
-  public void setEmbedResources(Boolean embedResources) {
-    this.embedResources = embedResources;
-  }
-
-  public HtmlOptions enableMinification(Boolean enableMinification) {
-    this.enableMinification = enableMinification;
-    return this;
-  }
-
-   /**
-   * Enables content (HTML, CSS and SVG) minification.
-   * @return enableMinification
-  **/
-  @ApiModelProperty(value = "Enables content (HTML, CSS and SVG) minification.")
-  public Boolean isisEnableMinification() {
-    return enableMinification;
-  }
-
-  public void setEnableMinification(Boolean enableMinification) {
-    this.enableMinification = enableMinification;
-  }
-
-  public HtmlOptions enableResponsiveRendering(Boolean enableResponsiveRendering) {
-    this.enableResponsiveRendering = enableResponsiveRendering;
-    return this;
-  }
-
-   /**
-   * Indicates whether rendering will provide responsive web pages, that look well on different device types.
-   * @return enableResponsiveRendering
-  **/
-  @ApiModelProperty(value = "Indicates whether rendering will provide responsive web pages, that look well on different device types.")
-  public Boolean isisEnableResponsiveRendering() {
-    return enableResponsiveRendering;
-  }
-
-  public void setEnableResponsiveRendering(Boolean enableResponsiveRendering) {
-    this.enableResponsiveRendering = enableResponsiveRendering;
-  }
-
-  public HtmlOptions excludeFonts(Boolean excludeFonts) {
-    this.excludeFonts = excludeFonts;
-    return this;
-  }
-
-   /**
-   * Prevents adding fonts to the output HTML document.  
-   * @return excludeFonts
-  **/
-  @ApiModelProperty(value = "Prevents adding fonts to the output HTML document.  ")
-  public Boolean isisExcludeFonts() {
-    return excludeFonts;
-  }
-
-  public void setExcludeFonts(Boolean excludeFonts) {
-    this.excludeFonts = excludeFonts;
-  }
-
-  public HtmlOptions excludeFontsList(List<String> excludeFontsList) {
-    this.excludeFontsList = excludeFontsList;
-    return this;
-  }
-
-  public HtmlOptions addExcludeFontsListItem(String excludeFontsListItem) {
-    if (this.excludeFontsList == null) {
-      this.excludeFontsList = new ArrayList<String>();
-    }
-    this.excludeFontsList.add(excludeFontsListItem);
-    return this;
-  }
-
-   /**
-   * The list of font names, that will be excluded from HTML.
-   * @return excludeFontsList
-  **/
-  @ApiModelProperty(value = "The list of font names, that will be excluded from HTML.")
-  public List<String> getExcludeFontsList() {
-    return excludeFontsList;
-  }
-
-  public void setExcludeFontsList(List<String> excludeFontsList) {
-    this.excludeFontsList = excludeFontsList;
   }
 
 
@@ -219,19 +99,14 @@ public class HtmlOptions extends RenderOptions {
       return false;
     }
     HtmlOptions htmlOptions = (HtmlOptions) o;
-    return Objects.equals(this.resourcePath, htmlOptions.resourcePath) &&
-        Objects.equals(this.ignoreResourcePathInResources, htmlOptions.ignoreResourcePathInResources) &&
-        Objects.equals(this.embedResources, htmlOptions.embedResources) &&
-        Objects.equals(this.enableMinification, htmlOptions.enableMinification) &&
-        Objects.equals(this.enableResponsiveRendering, htmlOptions.enableResponsiveRendering) &&
-        Objects.equals(this.excludeFonts, htmlOptions.excludeFonts) &&
-        Objects.equals(this.excludeFontsList, htmlOptions.excludeFontsList) &&
+    return Objects.equals(this.externalResources, htmlOptions.externalResources) &&
+        Objects.equals(this.resourcePath, htmlOptions.resourcePath) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourcePath, ignoreResourcePathInResources, embedResources, enableMinification, enableResponsiveRendering, excludeFonts, excludeFontsList, super.hashCode());
+    return Objects.hash(externalResources, resourcePath, super.hashCode());
   }
 
 
@@ -240,13 +115,8 @@ public class HtmlOptions extends RenderOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class HtmlOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    externalResources: ").append(toIndentedString(externalResources)).append("\n");
     sb.append("    resourcePath: ").append(toIndentedString(resourcePath)).append("\n");
-    sb.append("    ignoreResourcePathInResources: ").append(toIndentedString(ignoreResourcePathInResources)).append("\n");
-    sb.append("    embedResources: ").append(toIndentedString(embedResources)).append("\n");
-    sb.append("    enableMinification: ").append(toIndentedString(enableMinification)).append("\n");
-    sb.append("    enableResponsiveRendering: ").append(toIndentedString(enableResponsiveRendering)).append("\n");
-    sb.append("    excludeFonts: ").append(toIndentedString(excludeFonts)).append("\n");
-    sb.append("    excludeFontsList: ").append(toIndentedString(excludeFontsList)).append("\n");
     sb.append("}");
     return sb.toString();
   }

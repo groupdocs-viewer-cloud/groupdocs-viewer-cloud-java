@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ApiClient.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -97,7 +97,7 @@ public class ApiClient {
         this.json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("java-sdk/18.11");
+        setUserAgent("java-sdk/19.3");
 
         // Set connection timeout
         setConnectTimeout(configuration.getTimeout());
@@ -110,13 +110,13 @@ public class ApiClient {
 
         String appSid = configuration.getAppSid();
         String appKey = configuration.getAppKey();
-        this.authentications.put("oauth", new OAuth(configuration, appSid, appKey));
+        this.authentications.put("JWT", new OAuth(configuration, appSid, appKey));
         // Prevent the authentications from being modified.
         this.authentications = Collections.unmodifiableMap(authentications);
     }
 
     /**
-     * Get server URL, default value is http://api.groupdocs.cloud/v1
+     * Get server URL, default value is https://api.groupdocs.cloud/v2.0
      *
      * @return Server URL
      */

@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Configuration.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,7 +34,7 @@ public class Configuration {
 
     private String appKey = null;
 
-    private String apiVersion = "/v1";
+    private String apiVersion = "/v2.0";
 
     private String apiBaseUrl = "https://api.groupdocs.cloud";
 
@@ -123,7 +123,7 @@ public class Configuration {
     }
 
     /**
-     * Gets Server URL e.g. https://api.groupdocs.cloud/v1
+     * Gets Server URL e.g. https://api.groupdocs.cloud/v2.0
      *
      * @return Server URL
      */

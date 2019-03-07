@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="AuthError.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Describes Auth error.")
 public class AuthError {
-  @SerializedName("error_description")
+  @SerializedName("error")
   private String errorMessage = null;
 
   public AuthError error(String errorMessage) {

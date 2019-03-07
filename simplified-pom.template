@@ -32,7 +32,7 @@
         <repository>
             <id>maven.aspose.cloud</id>
             <name>maven.aspose.cloud</name>
-            <url>http://artifact.aspose.cloud/repo/</url>
+            <url>https://repository.aspose.cloud/repo/</url>
         </repository>
     </repositories>
         

@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="CadOptions.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,17 +33,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.cloud.viewer.model.Tile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * The CAD documents rendering options. Rendering of CAD file formats is not supported at the moment.
+ * Rendering options for CAD file formats. CAD file formats include files with extensions: .dwg, .dxf, .dgn, .ifc, .stl
  */
-@ApiModel(description = "The CAD documents rendering options. Rendering of CAD file formats is not supported at the moment.")
+@ApiModel(description = "Rendering options for CAD file formats. CAD file formats include files with extensions: .dwg, .dxf, .dgn, .ifc, .stl")
 public class CadOptions {
   @SerializedName("scaleFactor")
   private Double scaleFactor = null;
@@ -54,28 +51,16 @@ public class CadOptions {
   @SerializedName("height")
   private Integer height = null;
 
-  @SerializedName("renderLayouts")
-  private Boolean renderLayouts = null;
-
-  @SerializedName("layoutName")
-  private String layoutName = null;
-
-  @SerializedName("layers")
-  private List<String> layers = null;
-
-  @SerializedName("tiles")
-  private List<Tile> tiles = null;
-
   public CadOptions scaleFactor(Double scaleFactor) {
     this.scaleFactor = scaleFactor;
     return this;
   }
 
    /**
-   * The scale factor affects the size of an output document.        
+   * Scale factor allows to change the size of the output document. Values higher than 1 will enlarge output result and values between 0 and 1 will make output result smaller. This option is ignored when either Height or Width options are set. 
    * @return scaleFactor
   **/
-  @ApiModelProperty(value = "The scale factor affects the size of an output document.        ")
+  @ApiModelProperty(required = true, value = "Scale factor allows to change the size of the output document. Values higher than 1 will enlarge output result and values between 0 and 1 will make output result smaller. This option is ignored when either Height or Width options are set. ")
   public Double getScaleFactor() {
     return scaleFactor;
   }
@@ -90,10 +75,10 @@ public class CadOptions {
   }
 
    /**
-   * The width of the render result in pixels.        
+   * Width of the output result in pixels        
    * @return width
   **/
-  @ApiModelProperty(value = "The width of the render result in pixels.        ")
+  @ApiModelProperty(required = true, value = "Width of the output result in pixels        ")
   public Integer getWidth() {
     return width;
   }
@@ -108,104 +93,16 @@ public class CadOptions {
   }
 
    /**
-   * The height of the render result in pixels.        
+   * Height of the output result in pixels     
    * @return height
   **/
-  @ApiModelProperty(value = "The height of the render result in pixels.        ")
+  @ApiModelProperty(required = true, value = "Height of the output result in pixels     ")
   public Integer getHeight() {
     return height;
   }
 
   public void setHeight(Integer height) {
     this.height = height;
-  }
-
-  public CadOptions renderLayouts(Boolean renderLayouts) {
-    this.renderLayouts = renderLayouts;
-    return this;
-  }
-
-   /**
-   * Indicates whether layouts from CAD document should be rendered.
-   * @return renderLayouts
-  **/
-  @ApiModelProperty(value = "Indicates whether layouts from CAD document should be rendered.")
-  public Boolean isisRenderLayouts() {
-    return renderLayouts;
-  }
-
-  public void setRenderLayouts(Boolean renderLayouts) {
-    this.renderLayouts = renderLayouts;
-  }
-
-  public CadOptions layoutName(String layoutName) {
-    this.layoutName = layoutName;
-    return this;
-  }
-
-   /**
-   * The name of the specific layout to render.
-   * @return layoutName
-  **/
-  @ApiModelProperty(value = "The name of the specific layout to render.")
-  public String getLayoutName() {
-    return layoutName;
-  }
-
-  public void setLayoutName(String layoutName) {
-    this.layoutName = layoutName;
-  }
-
-  public CadOptions layers(List<String> layers) {
-    this.layers = layers;
-    return this;
-  }
-
-  public CadOptions addLayersItem(String layersItem) {
-    if (this.layers == null) {
-      this.layers = new ArrayList<String>();
-    }
-    this.layers.add(layersItem);
-    return this;
-  }
-
-   /**
-   * The list of document layers to render. By default all layers will be rendered. Layer names are case sensitive.
-   * @return layers
-  **/
-  @ApiModelProperty(value = "The list of document layers to render. By default all layers will be rendered. Layer names are case sensitive.")
-  public List<String> getLayers() {
-    return layers;
-  }
-
-  public void setLayers(List<String> layers) {
-    this.layers = layers;
-  }
-
-  public CadOptions tiles(List<Tile> tiles) {
-    this.tiles = tiles;
-    return this;
-  }
-
-  public CadOptions addTilesItem(Tile tilesItem) {
-    if (this.tiles == null) {
-      this.tiles = new ArrayList<Tile>();
-    }
-    this.tiles.add(tilesItem);
-    return this;
-  }
-
-   /**
-   * The coordinates of the drawing regions, that should be rendered. Please note, that this option works only for DWG format. When the list is empty, then whole drawing is rendered. When the list contains at least one tile, then ScaleFactor, Width, Height, RenderLayouts and LayoutName properties are ignored. 
-   * @return tiles
-  **/
-  @ApiModelProperty(value = "The coordinates of the drawing regions, that should be rendered. Please note, that this option works only for DWG format. When the list is empty, then whole drawing is rendered. When the list contains at least one tile, then ScaleFactor, Width, Height, RenderLayouts and LayoutName properties are ignored. ")
-  public List<Tile> getTiles() {
-    return tiles;
-  }
-
-  public void setTiles(List<Tile> tiles) {
-    this.tiles = tiles;
   }
 
 
@@ -220,16 +117,12 @@ public class CadOptions {
     CadOptions cadOptions = (CadOptions) o;
     return Objects.equals(this.scaleFactor, cadOptions.scaleFactor) &&
         Objects.equals(this.width, cadOptions.width) &&
-        Objects.equals(this.height, cadOptions.height) &&
-        Objects.equals(this.renderLayouts, cadOptions.renderLayouts) &&
-        Objects.equals(this.layoutName, cadOptions.layoutName) &&
-        Objects.equals(this.layers, cadOptions.layers) &&
-        Objects.equals(this.tiles, cadOptions.tiles);
+        Objects.equals(this.height, cadOptions.height);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scaleFactor, width, height, renderLayouts, layoutName, layers, tiles);
+    return Objects.hash(scaleFactor, width, height);
   }
 
 
@@ -241,10 +134,6 @@ public class CadOptions {
     sb.append("    scaleFactor: ").append(toIndentedString(scaleFactor)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
-    sb.append("    renderLayouts: ").append(toIndentedString(renderLayouts)).append("\n");
-    sb.append("    layoutName: ").append(toIndentedString(layoutName)).append("\n");
-    sb.append("    layers: ").append(toIndentedString(layers)).append("\n");
-    sb.append("    tiles: ").append(toIndentedString(tiles)).append("\n");
     sb.append("}");
     return sb.toString();
   }

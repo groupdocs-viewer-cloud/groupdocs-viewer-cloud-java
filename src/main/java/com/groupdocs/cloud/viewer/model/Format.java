@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Format.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,33 +38,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Format description.
+ * File-format
  */
-@ApiModel(description = "Format description.")
+@ApiModel(description = "File-format")
 public class Format {
-  @SerializedName("fileFormat")
-  private String fileFormat = null;
-
   @SerializedName("extension")
   private String extension = null;
 
-  public Format fileFormat(String fileFormat) {
-    this.fileFormat = fileFormat;
-    return this;
-  }
-
-   /**
-   * File format.
-   * @return fileFormat
-  **/
-  @ApiModelProperty(value = "File format.")
-  public String getFileFormat() {
-    return fileFormat;
-  }
-
-  public void setFileFormat(String fileFormat) {
-    this.fileFormat = fileFormat;
-  }
+  @SerializedName("fileFormat")
+  private String fileFormat = null;
 
   public Format extension(String extension) {
     this.extension = extension;
@@ -72,16 +54,34 @@ public class Format {
   }
 
    /**
-   * File extension.
+   * File extension
    * @return extension
   **/
-  @ApiModelProperty(value = "File extension.")
+  @ApiModelProperty(value = "File extension")
   public String getExtension() {
     return extension;
   }
 
   public void setExtension(String extension) {
     this.extension = extension;
+  }
+
+  public Format fileFormat(String fileFormat) {
+    this.fileFormat = fileFormat;
+    return this;
+  }
+
+   /**
+   * File format
+   * @return fileFormat
+  **/
+  @ApiModelProperty(value = "File format")
+  public String getFileFormat() {
+    return fileFormat;
+  }
+
+  public void setFileFormat(String fileFormat) {
+    this.fileFormat = fileFormat;
   }
 
 
@@ -94,13 +94,13 @@ public class Format {
       return false;
     }
     Format format = (Format) o;
-    return Objects.equals(this.fileFormat, format.fileFormat) &&
-        Objects.equals(this.extension, format.extension);
+    return Objects.equals(this.extension, format.extension) &&
+        Objects.equals(this.fileFormat, format.fileFormat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileFormat, extension);
+    return Objects.hash(extension, fileFormat);
   }
 
 
@@ -109,8 +109,8 @@ public class Format {
     StringBuilder sb = new StringBuilder();
     sb.append("class Format {\n");
     
-    sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
     sb.append("    extension: ").append(toIndentedString(extension)).append("\n");
+    sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

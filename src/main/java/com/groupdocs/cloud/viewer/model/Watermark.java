@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Watermark.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,9 +38,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Provides options to configure watermark appearance. 
+ * Text watermark
  */
-@ApiModel(description = "Provides options to configure watermark appearance. ")
+@ApiModel(description = "Text watermark")
 public class Watermark {
   @SerializedName("text")
   private String text = null;
@@ -60,10 +60,10 @@ public class Watermark {
   }
 
    /**
-   * The watermark text.
+   * Watermark text.
    * @return text
   **/
-  @ApiModelProperty(value = "The watermark text.")
+  @ApiModelProperty(value = "Watermark text.")
   public String getText() {
     return text;
   }
@@ -78,10 +78,10 @@ public class Watermark {
   }
 
    /**
-   * The watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \&quot;Red\&quot;.
+   * Watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \&quot;Red\&quot;.
    * @return color
   **/
-  @ApiModelProperty(value = "The watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \"Red\".")
+  @ApiModelProperty(value = "Watermark color. Supported formats {Magenta|(112,222,11)|(50,112,222,11)}. Default value is \"Red\".")
   public String getColor() {
     return color;
   }
@@ -96,10 +96,10 @@ public class Watermark {
   }
 
    /**
-   * The watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \&quot;Diagonal\&quot;.
+   * Watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \&quot;Diagonal\&quot;.
    * @return position
   **/
-  @ApiModelProperty(value = "The watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".")
+  @ApiModelProperty(value = "Watermark position. Supported positions {Diagonal|TopLeft|TopCenter|TopRight|BottomLeft|BottomCenter|BottomRight}. Default value is \"Diagonal\".")
   public String getPosition() {
     return position;
   }
@@ -117,7 +117,7 @@ public class Watermark {
    * Watermark size in percents. Default value is 100.
    * @return size
   **/
-  @ApiModelProperty(value = "Watermark size in percents. Default value is 100.")
+  @ApiModelProperty(required = true, value = "Watermark size in percents. Default value is 100.")
   public Integer getSize() {
     return size;
   }

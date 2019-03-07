@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="Resource.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,35 +33,55 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.cloud.viewer.model.ResourceUrl;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Describes resource.
+ * Reference to resource
  */
-@ApiModel(description = "Describes resource.")
-public class Resource extends ResourceUrl {
-  @SerializedName("name")
-  private String name = null;
+@ApiModel(description = "Reference to resource")
+public class Resource {
+  @SerializedName("path")
+  private String path = null;
 
-  public Resource name(String name) {
-    this.name = name;
+  @SerializedName("downloadUrl")
+  private String downloadUrl = null;
+
+  public Resource path(String path) {
+    this.path = path;
     return this;
   }
 
    /**
-   * HTML resource (image, style, graphics or font) file name.
-   * @return name
+   * Path of resource file in storage
+   * @return path
   **/
-  @ApiModelProperty(value = "HTML resource (image, style, graphics or font) file name.")
-  public String getName() {
-    return name;
+  @ApiModelProperty(value = "Path of resource file in storage")
+  public String getPath() {
+    return path;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setPath(String path) {
+    this.path = path;
+  }
+
+  public Resource downloadUrl(String downloadUrl) {
+    this.downloadUrl = downloadUrl;
+    return this;
+  }
+
+   /**
+   * ULR to retrieve resource.
+   * @return downloadUrl
+  **/
+  @ApiModelProperty(value = "ULR to retrieve resource.")
+  public String getDownloadUrl() {
+    return downloadUrl;
+  }
+
+  public void setDownloadUrl(String downloadUrl) {
+    this.downloadUrl = downloadUrl;
   }
 
 
@@ -74,13 +94,13 @@ public class Resource extends ResourceUrl {
       return false;
     }
     Resource resource = (Resource) o;
-    return Objects.equals(this.name, resource.name) &&
-        super.equals(o);
+    return Objects.equals(this.path, resource.path) &&
+        Objects.equals(this.downloadUrl, resource.downloadUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, super.hashCode());
+    return Objects.hash(path, downloadUrl);
   }
 
 
@@ -88,8 +108,9 @@ public class Resource extends ResourceUrl {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Resource {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    
+    sb.append("    path: ").append(toIndentedString(path)).append("\n");
+    sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

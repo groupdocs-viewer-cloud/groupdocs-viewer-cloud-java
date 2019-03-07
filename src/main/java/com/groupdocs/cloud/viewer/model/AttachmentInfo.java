@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="AttachmentInfo.java">
- *   Copyright (c) 2003-2018 Aspose Pty Ltd
+ *   Copyright (c) 2003-2019 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,18 +38,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Describes attachment information
+ * Attachment information
  */
-@ApiModel(description = "Describes attachment information")
+@ApiModel(description = "Attachment information")
 public class AttachmentInfo {
   @SerializedName("name")
   private String name = null;
-
-  @SerializedName("extension")
-  private String extension = null;
-
-  @SerializedName("fileFormat")
-  private String fileFormat = null;
 
   public AttachmentInfo name(String name) {
     this.name = name;
@@ -57,52 +51,16 @@ public class AttachmentInfo {
   }
 
    /**
-   * Attachment name.
+   * Attachment name
    * @return name
   **/
-  @ApiModelProperty(value = "Attachment name.")
+  @ApiModelProperty(value = "Attachment name")
   public String getName() {
     return name;
   }
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public AttachmentInfo extension(String extension) {
-    this.extension = extension;
-    return this;
-  }
-
-   /**
-   * Attachment extension.
-   * @return extension
-  **/
-  @ApiModelProperty(value = "Attachment extension.")
-  public String getExtension() {
-    return extension;
-  }
-
-  public void setExtension(String extension) {
-    this.extension = extension;
-  }
-
-  public AttachmentInfo fileFormat(String fileFormat) {
-    this.fileFormat = fileFormat;
-    return this;
-  }
-
-   /**
-   * File format.
-   * @return fileFormat
-  **/
-  @ApiModelProperty(value = "File format.")
-  public String getFileFormat() {
-    return fileFormat;
-  }
-
-  public void setFileFormat(String fileFormat) {
-    this.fileFormat = fileFormat;
   }
 
 
@@ -115,14 +73,12 @@ public class AttachmentInfo {
       return false;
     }
     AttachmentInfo attachmentInfo = (AttachmentInfo) o;
-    return Objects.equals(this.name, attachmentInfo.name) &&
-        Objects.equals(this.extension, attachmentInfo.extension) &&
-        Objects.equals(this.fileFormat, attachmentInfo.fileFormat);
+    return Objects.equals(this.name, attachmentInfo.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, extension, fileFormat);
+    return Objects.hash(name);
   }
 
 
@@ -132,8 +88,6 @@ public class AttachmentInfo {
     sb.append("class AttachmentInfo {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    extension: ").append(toIndentedString(extension)).append("\n");
-    sb.append("    fileFormat: ").append(toIndentedString(fileFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }
