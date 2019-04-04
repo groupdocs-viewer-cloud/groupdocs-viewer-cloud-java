@@ -53,6 +53,9 @@ public class HtmlOptions extends RenderOptions {
   @SerializedName("resourcePath")
   private String resourcePath = null;
 
+  @SerializedName("isResponsive")
+  private Boolean isResponsive = null;
+
   public HtmlOptions externalResources(Boolean externalResources) {
     this.externalResources = externalResources;
     return this;
@@ -89,6 +92,24 @@ public class HtmlOptions extends RenderOptions {
     this.resourcePath = resourcePath;
   }
 
+  public HtmlOptions isResponsive(Boolean isResponsive) {
+    this.isResponsive = isResponsive;
+    return this;
+  }
+
+   /**
+   * Indicates whether rendering will provide responsive web pages, that look well on different device types. Default value is false.
+   * @return isResponsive
+  **/
+  @ApiModelProperty(required = true, value = "Indicates whether rendering will provide responsive web pages, that look well on different device types. Default value is false.")
+  public Boolean getIsResponsive() {
+    return isResponsive;
+  }
+
+  public void setIsResponsive(Boolean isResponsive) {
+    this.isResponsive = isResponsive;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -101,12 +122,13 @@ public class HtmlOptions extends RenderOptions {
     HtmlOptions htmlOptions = (HtmlOptions) o;
     return Objects.equals(this.externalResources, htmlOptions.externalResources) &&
         Objects.equals(this.resourcePath, htmlOptions.resourcePath) &&
+        Objects.equals(this.isResponsive, htmlOptions.isResponsive) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(externalResources, resourcePath, super.hashCode());
+    return Objects.hash(externalResources, resourcePath, isResponsive, super.hashCode());
   }
 
 
@@ -117,6 +139,7 @@ public class HtmlOptions extends RenderOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    externalResources: ").append(toIndentedString(externalResources)).append("\n");
     sb.append("    resourcePath: ").append(toIndentedString(resourcePath)).append("\n");
+    sb.append("    isResponsive: ").append(toIndentedString(isResponsive)).append("\n");
     sb.append("}");
     return sb.toString();
   }
