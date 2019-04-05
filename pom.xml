@@ -137,7 +137,7 @@
                                         dir="${project.basedir}"
                                         executable="powershell"
                                         failonerror="true">
-                                        <arg line="-Command &quot;(Get-Content simplified-pom.template) | ForEach-Object { $_ -replace &quot;{{VERSION}}&quot;, &quot;${project.version}&quot; } | Set-Content simplified-pom.xml&quot;" />
+                                        <arg line="-Command &quot;(Get-Content simplified-pom.template) | ForEach-Object { $_ -replace &quot;{{VERSION}}&quot;, {&quot;${project.version}&quot;} } | Set-Content simplified-pom.xml&quot;" />
                                       </exec>
                                     </tasks>
                                 </configuration>
@@ -218,7 +218,7 @@
                                         dir="${project.basedir}"
                                         executable="powershell"
                                         failonerror="true">
-                                        <arg line="-Command &quot;(Get-Content simplified-pom.template) | ForEach-Object { $_ -replace &quot;{{VERSION}}&quot;, &quot;${project.version}&quot; } | Set-Content simplified-pom.xml&quot;" />
+                                        <arg line="-Command &quot;(Get-Content simplified-pom.template) | ForEach-Object { $_ -replace &quot;{{VERSION}}&quot;, {&quot;${project.version}&quot;} } | Set-Content simplified-pom.xml&quot;" />
                                       </exec>
                                     </tasks>
                                 </configuration>
