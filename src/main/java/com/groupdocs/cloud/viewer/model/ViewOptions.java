@@ -104,6 +104,9 @@ public class ViewOptions {
   @SerializedName("viewFormat")
   private ViewFormatEnum viewFormat = null;
 
+  @SerializedName("outputPath")
+  private String outputPath = null;
+
   @SerializedName("fontsPath")
   private String fontsPath = null;
 
@@ -147,6 +150,24 @@ public class ViewOptions {
 
   public void setViewFormat(ViewFormatEnum viewFormat) {
     this.viewFormat = viewFormat;
+  }
+
+  public ViewOptions outputPath(String outputPath) {
+    this.outputPath = outputPath;
+    return this;
+  }
+
+   /**
+   * The output path. Default value is &#39;viewer\\{input file path}_{file extension}\\&#39;
+   * @return outputPath
+  **/
+  @ApiModelProperty(value = "The output path. Default value is 'viewer\\{input file path}_{file extension}\\'")
+  public String getOutputPath() {
+    return outputPath;
+  }
+
+  public void setOutputPath(String outputPath) {
+    this.outputPath = outputPath;
   }
 
   public ViewOptions fontsPath(String fontsPath) {
@@ -215,6 +236,7 @@ public class ViewOptions {
     ViewOptions viewOptions = (ViewOptions) o;
     return Objects.equals(this.fileInfo, viewOptions.fileInfo) &&
         Objects.equals(this.viewFormat, viewOptions.viewFormat) &&
+        Objects.equals(this.outputPath, viewOptions.outputPath) &&
         Objects.equals(this.fontsPath, viewOptions.fontsPath) &&
         Objects.equals(this.watermark, viewOptions.watermark) &&
         Objects.equals(this.renderOptions, viewOptions.renderOptions);
@@ -222,7 +244,7 @@ public class ViewOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fileInfo, viewFormat, fontsPath, watermark, renderOptions);
+    return Objects.hash(fileInfo, viewFormat, outputPath, fontsPath, watermark, renderOptions);
   }
 
 
@@ -233,6 +255,7 @@ public class ViewOptions {
     
     sb.append("    fileInfo: ").append(toIndentedString(fileInfo)).append("\n");
     sb.append("    viewFormat: ").append(toIndentedString(viewFormat)).append("\n");
+    sb.append("    outputPath: ").append(toIndentedString(outputPath)).append("\n");
     sb.append("    fontsPath: ").append(toIndentedString(fontsPath)).append("\n");
     sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
     sb.append("    renderOptions: ").append(toIndentedString(renderOptions)).append("\n");

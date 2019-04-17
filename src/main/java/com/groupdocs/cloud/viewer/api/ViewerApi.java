@@ -142,7 +142,7 @@ public class ViewerApi {
     }
 
     /**
-     * Create new view if it not exists
+     * Render document pages
      * 
      * @param request The request model
      * @return ViewResult
@@ -154,7 +154,7 @@ public class ViewerApi {
     }
 
     /**
-     * Create new view if it not exists
+     * Render document pages
      * 
      * @param request The request model
      * @return ApiResponse&lt;ViewResult&gt;
@@ -167,7 +167,7 @@ public class ViewerApi {
     }
 
     /**
-     * Create new view if it not exists (asynchronously)
+     * Render document pages (asynchronously)
      * 
      * @param request The request model
      * @param callback The callback to be executed when the API call finishes
@@ -264,7 +264,7 @@ public class ViewerApi {
     }
 
     /**
-     * Delete view
+     * Delete rendered pages
      * 
      * @param request The request model
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -274,7 +274,7 @@ public class ViewerApi {
     }
 
     /**
-     * Delete view
+     * Delete rendered pages
      * 
      * @param request The request model
      * @return ApiResponse&lt;Void&gt;
@@ -286,7 +286,7 @@ public class ViewerApi {
     }
 
     /**
-     * Delete view (asynchronously)
+     * Delete rendered pages (asynchronously)
      * 
      * @param request The request model
      * @param callback The callback to be executed when the API call finishes
@@ -382,7 +382,7 @@ public class ViewerApi {
     }
 
     /**
-     * Get information about view
+     * Retrieve information about document pages
      * 
      * @param request The request model
      * @return InfoResult
@@ -394,7 +394,7 @@ public class ViewerApi {
     }
 
     /**
-     * Get information about view
+     * Retrieve information about document pages
      * 
      * @param request The request model
      * @return ApiResponse&lt;InfoResult&gt;
@@ -407,7 +407,7 @@ public class ViewerApi {
     }
 
     /**
-     * Get information about view (asynchronously)
+     * Retrieve information about document pages (asynchronously)
      * 
      * @param request The request model
      * @param callback The callback to be executed when the API call finishes
@@ -498,7 +498,7 @@ public class ViewerApi {
     }
 
     /**
-     * Get supported file formats
+     * List supported file formats
      * 
      * @return FormatsResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -509,7 +509,7 @@ public class ViewerApi {
     }
 
     /**
-     * Get supported file formats
+     * List supported file formats
      * 
      * @return ApiResponse&lt;FormatsResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -521,7 +521,7 @@ public class ViewerApi {
     }
 
     /**
-     * Get supported file formats (asynchronously)
+     * List supported file formats (asynchronously)
      * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
