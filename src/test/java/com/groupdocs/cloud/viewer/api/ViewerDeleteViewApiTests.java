@@ -44,13 +44,13 @@ public class ViewerDeleteViewApiTests extends BaseApiTest {
         ViewOptions viewOptions = new ViewOptions();
         viewOptions.setFileInfo(TestFiles.OnePageDocx.ToFileInfo());
         CreateViewRequest request = new CreateViewRequest(viewOptions);        
-        ViewResult viewResult = viewerApi.createView(request);
+        ViewResult viewResult = viewApi.createView(request);
         assertEquals(1, viewResult.getPages().size());       
 
         // Delete view                           
         DeleteViewOptions deleteViewOptions = new DeleteViewOptions();
         deleteViewOptions.setFileInfo(TestFiles.OnePageDocx.ToFileInfo());
         DeleteViewRequest dRequest = new DeleteViewRequest(deleteViewOptions);        
-        viewerApi.deleteView(dRequest);        
+        viewApi.deleteView(dRequest);        
     }
 }  

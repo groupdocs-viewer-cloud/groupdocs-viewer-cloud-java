@@ -49,7 +49,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
 
         // Act & Assert  
         try {
-            viewerApi.createView(request);
+            viewApi.createView(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
             assertEquals("Parameter 'FileInfo' is not specified.", ex.getMessage());
@@ -66,7 +66,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
 
         // Act & Assert  
         try {
-            viewerApi.createView(request);
+            viewApi.createView(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
             assertEquals("Can't find file located at 'some-folder/NotExist.docx'.", ex.getMessage());
@@ -82,7 +82,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(4, viewResult.getPages().size());
         assertEquals(0, viewResult.getAttachments().size());
@@ -104,7 +104,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(1, viewResult.getPages().size());
         assertEquals(0, viewResult.getAttachments().size());
@@ -122,7 +122,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(1, viewResult.getPages().size());
         assertEquals(0, viewResult.getAttachments().size());
@@ -140,7 +140,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(1, viewResult.getPages().size());
         assertEquals(0, viewResult.getAttachments().size());
@@ -161,7 +161,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(3, viewResult.getPages().size());
     }
@@ -181,7 +181,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(2, viewResult.getPages().size());
     }
@@ -202,7 +202,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(3, viewResult.getPages().size());
     }
@@ -221,7 +221,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(3, viewResult.getPages().size());
     }
@@ -243,7 +243,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(2, viewResult.getPages().size());
     }
@@ -260,7 +260,7 @@ public class ViewerCreateViewApiTests extends BaseApiTest {
         CreateViewRequest request = new CreateViewRequest(viewOptions);
 
         // Act & Assert
-        ViewResult viewResult =viewerApi.createView(request);
+        ViewResult viewResult =viewApi.createView(request);
 
         assertEquals(1, viewResult.getPages().size());
         assertEquals(0, viewResult.getAttachments().size());

@@ -52,11 +52,11 @@ public class AuthApiTests {
         Configuration configuration = new Configuration(appSid, appKey);
         configuration.setApiBaseUrl(Config.ApiBaseUrl);
 
-        ViewerApi viewerApi = new ViewerApi(configuration);
-        viewerApi.getApiClient().setConnectTimeout(10 * 1000);
+        InfoApi infoApi = new InfoApi(configuration);
+        infoApi.getApiClient().setConnectTimeout(10 * 1000);
 
         try {
-            viewerApi.getSupportedFileFormats();
+            infoApi.getSupportedFileFormats();
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
             assertEquals("invalid_client", ex.getMessage());
@@ -75,11 +75,11 @@ public class AuthApiTests {
         Configuration configuration = new Configuration(appSid, appKey);
         configuration.setApiBaseUrl(Config.ApiBaseUrl);
 
-        ViewerApi viewerApi = new ViewerApi(configuration);
-        viewerApi.getApiClient().setConnectTimeout(10 * 1000);
+        InfoApi infoApi = new InfoApi(configuration);
+        infoApi.getApiClient().setConnectTimeout(10 * 1000);
 
         try {
-            viewerApi.getSupportedFileFormats();
+            infoApi.getSupportedFileFormats();
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
             assertEquals("invalid_client", ex.getMessage());

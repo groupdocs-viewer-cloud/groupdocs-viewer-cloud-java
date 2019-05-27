@@ -48,7 +48,8 @@ import org.junit.Before;
  */
 public class BaseApiTest {
 
-    protected ViewerApi viewerApi;
+    protected InfoApi infoApi;
+    protected ViewApi viewApi;
     protected StorageApi storageApi;
     protected FileApi fileApi;
     protected FolderApi folderApi;
@@ -59,7 +60,8 @@ public class BaseApiTest {
         Configuration configuration = new Configuration(Config.AppSID, Config.AppKey);
         configuration.setApiBaseUrl(Config.ApiBaseUrl);
 
-        viewerApi = new ViewerApi(configuration);
+        infoApi = new InfoApi(configuration);
+        viewApi = new ViewApi(configuration);
         storageApi = new StorageApi(configuration);
         fileApi = new FileApi(configuration);
         folderApi = new FolderApi(configuration);

@@ -37,7 +37,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-viewer-cloud</artifactId>
-    <version>19.4</version>
+    <version>19.5</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/groupdocs-viewer-cloud-19.4.jar
+* target/groupdocs-viewer-cloud-19.5.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -73,10 +73,10 @@ public class ApiExample {
 
         Configuration configuration = new Configuration(appSid, appKey);
         
-        ViewerApi viewerApi = new ViewerApi(configuration);
+        InfoApi infoApi = new InfoApi(configuration);
 
         try {
-            FormatsResult response = viewerApi.getSupportedFileFormats();
+            FormatsResult response = infoApi.getSupportedFileFormats();
             for (Format format : response.getFormats()) {
                 System.out.println(format.getFileFormat());
             }

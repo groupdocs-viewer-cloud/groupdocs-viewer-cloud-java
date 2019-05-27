@@ -47,7 +47,7 @@ public class FormatsApiTests extends BaseApiTest {
      */
     @Test
     public void getSupportedFileFormatsTest() throws ApiException {
-        FormatsResult response = viewerApi.getSupportedFileFormats();
+        FormatsResult response = infoApi.getSupportedFileFormats();
 
         assertTrue(response.getFormats().size() > 0);
         for (Format format : response.getFormats()) {

@@ -49,7 +49,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
 
         // Act & Assert  
         try {
-            viewerApi.getInfo(request);
+            infoApi.getInfo(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
             assertEquals("Parameter 'FileInfo' is not specified.", ex.getMessage());
@@ -66,7 +66,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
 
         // Act & Assert  
         try {
-            viewerApi.getInfo(request);
+            infoApi.getInfo(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
             assertEquals("Can't find file located at 'some-folder/NotExist.docx'.", ex.getMessage());
@@ -82,7 +82,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(4, infoResult.getPages().size());
         assertEquals(0, infoResult.getAttachments().size());
@@ -97,7 +97,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(1, infoResult.getPages().size());
         assertEquals(0, infoResult.getAttachments().size());
@@ -115,7 +115,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(1, infoResult.getPages().size());
         assertEquals(0, infoResult.getAttachments().size());
@@ -133,7 +133,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(1, infoResult.getPages().size());
         assertEquals(0, infoResult.getAttachments().size());
@@ -154,7 +154,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(3, infoResult.getPages().size());
     }
@@ -174,7 +174,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(2, infoResult.getPages().size());
     }
@@ -195,7 +195,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(3, infoResult.getPages().size());
     }
@@ -214,7 +214,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(3, infoResult.getPages().size());
     }
@@ -236,7 +236,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(2, infoResult.getPages().size());
     }
@@ -254,7 +254,7 @@ public class ViewerGetInfoApiTests extends BaseApiTest {
         GetInfoRequest request = new GetInfoRequest(viewOptions);
 
         // Act & Assert
-        InfoResult infoResult = viewerApi.getInfo(request);
+        InfoResult infoResult = infoApi.getInfo(request);
 
         assertEquals(1, infoResult.getPages().size());
         assertEquals(0, infoResult.getAttachments().size());
