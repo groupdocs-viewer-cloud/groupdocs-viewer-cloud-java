@@ -60,7 +60,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 import com.groupdocs.cloud.viewer.client.*;
 import com.groupdocs.cloud.viewer.model.*;
-import com.groupdocs.cloud.viewer.api.ViewerApi;
+import com.groupdocs.cloud.viewer.api.InfoApi;
 
 import java.util.*;
 
