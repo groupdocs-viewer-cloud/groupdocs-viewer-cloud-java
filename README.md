@@ -101,17 +101,20 @@ At first generate the JAR by executing `mvn package`, then manually install the 
 
 ```java
 // For complete examples and data files, please go to https://github.com/groupdocs-viewer-cloud/groupdocs-viewer-cloud-java-samples
-String MyAppKey = ""; // Get AppKey from https://dashboard.groupdocs.cloud
-String MyAppSid = ""; // Get AppSID from https://dashboard.groupdocs.cloud
+// Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+String MyClientId = "";
+String MyClientSecret = "";
 
-Configuration configuration = new Configuration(MyAppSid, MyAppKey);
+Configuration configuration = new Configuration(MyClientId, MyClientSecret);
 ViewApi apiInstance = new ViewApi(configuration);
 
 FileInfo fileInfo = new FileInfo();
 fileInfo.setFilePath("SampleFiles/sample.docx");
+
 ViewOptions viewOptions = new ViewOptions();
 viewOptions.setFileInfo(fileInfo);
 viewOptions.setViewFormat(ViewFormatEnum.PDF);
+
 PdfOptions renderOptions = new PdfOptions();
 renderOptions.setPermissions(PermissionsEnum.DENYMODIFICATION);
 renderOptions.setPermissionsPassword("p123");
