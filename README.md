@@ -24,7 +24,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-viewer-cloud</artifactId>
-    <version>21.12</version>
+    <version>23.3</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -43,7 +43,7 @@ repositories {
 ...
 dependencies {
     ...
-    implementation 'com.groupdocs:groupdocs-viewer-cloud:21.12'
+    implementation 'com.groupdocs:groupdocs-viewer-cloud:23.3'
 }
 ```
 
@@ -100,7 +100,7 @@ mvn package -D maven.test.skip=true
 
 Then manually install the following JARs:
 
-* target/groupdocs-viewer-cloud-21.12.jar
+* target/groupdocs-viewer-cloud-23.3.jar
 * target/lib/*.jar
 
 ## Licensing
