@@ -5,7 +5,7 @@
     <artifactId>groupdocs-viewer-cloud</artifactId>
     <packaging>jar</packaging>
     <name>groupdocs-viewer-cloud</name>
-    <version>24.8</version>
+    <version>24.12</version>
     <url>https://github.com/groupdocs-viewer-cloud/groupdocs-viewer-cloud-java</url>
     <description>Java library for communicating with the GroupDocs.Viewer Cloud API</description>
     <scm>
@@ -326,7 +326,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <gson-fire-version>1.8.0</gson-fire-version>
