@@ -5,7 +5,7 @@
 
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-viewer-cloud</artifactId>
-    <version>24.12</version>
+    <version>25.3</version>
     <packaging>jar</packaging>
 
     <name>groupdocs-viewer-cloud</name>
