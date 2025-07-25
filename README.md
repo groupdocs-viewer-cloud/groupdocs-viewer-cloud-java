@@ -1,6 +1,6 @@
 # GroupDocs.Viewer Cloud SDK for Java
 
-This repository contains GroupDocs.Viewer Cloud SDK for Java source code. This SDK allows you to work with GroupDocs.Viewer Cloud REST APIs in your Java applications.
+This repository contains GroupDocs.Viewer Cloud SDK for Java source code. This SDK allows you to work with GroupDocs.Viewer Cloud REST APIs in your Java applications. This allows rendering any type of documents - Word, Excel, Presentation, Cad, Email, etc, to HTML, image or PDF format with the flexibility to render the whole document or custom range of pages.
 
 ## Requirements
 
@@ -54,33 +54,111 @@ dependencies {
 * Build and execute
 * Explore more samples at [GitHub](https://github.com/groupdocs-viewer-cloud/groupdocs-viewer-cloud-java-samples)
 
-Example:
+Below is an example demonstrating how to preview document using GroupDocs.Viewer Cloud SDK for Java:
 
 ```java
-import com.groupdocs.cloud.viewer.client.*;
-import com.groupdocs.cloud.viewer.model.*;
-import com.groupdocs.cloud.viewer.api.InfoApi;
+import com.groupdocs.cloud.viewer.api.ViewApi;
+import com.groupdocs.cloud.viewer.client.Configuration;
+import com.groupdocs.cloud.viewer.model.requests.ConvertAndDownloadRequest;
 
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
 
-public class ApiExample {
+public class Example {
 
     public static void main(String[] args) {
-        //TODO: Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
-        String appSid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
-        String appKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+        // For complete examples and data files, please go to https://github.com/groupdocs-viewer-cloud/groupdocs-viewer-cloud-java-samples
+        String myClientId = ""; // Get Client Id from https://dashboard.groupdocs.cloud
+        String myClientSecret = ""; // Get Client Secret from https://dashboard.groupdocs.cloud
 
-        Configuration configuration = new Configuration(appSid, appKey);
-        
-        InfoApi infoApi = new InfoApi(configuration);
+        Configuration configuration = new Configuration(myClientId, myClientSecret);
+        ViewApi viewApi = new ViewApi(configuration);
+
+        String format = "jpg";
+        try (InputStream fileStream = new FileInputStream("myfile.docx")) {
+            ConvertAndDownloadRequest request = new ConvertAndDownloadRequest(format, fileStream);
+            InputStream result = viewApi.convertAndDownload(request);
+
+            // Save the resulting stream (a *.jpg file) for your purpose
+            try (OutputStream outStream = new FileOutputStream("output.jpg")) {
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                while ((bytesRead = result.read(buffer)) != -1) {
+                    outStream.write(buffer, 0, bytesRead);
+                }
+            }
+            result.close();
+        } catch (Exception e) {
+            System.err.println("Failed to convert and download the document");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+And here is an example demonstrating how to upload the document, render it, and download the result using GroupDocs.Viewer Cloud SDK for Java:
+
+```java
+import com.groupdocs.cloud.viewer.api.ViewApi;
+import com.groupdocs.cloud.viewer.api.FileApi;
+import com.groupdocs.cloud.viewer.client.Configuration;
+import com.groupdocs.cloud.viewer.model.*;
+import com.groupdocs.cloud.viewer.model.requests.*;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+
+public class Example {
+
+    public static void main(String[] args) {
+        // For complete examples and data files, please go to https://github.com/groupdocs-viewer-cloud/groupdocs-viewer-cloud-java-samples
+        String myClientId = ""; // Get Client Id from https://dashboard.groupdocs.cloud
+        String myClientSecret = ""; // Get Client Secret from https://dashboard.groupdocs.cloud
+
+        Configuration configuration = new Configuration(myClientId, myClientSecret);
 
         try {
-            FormatsResult response = infoApi.getSupportedFileFormats();
-            for (Format format : response.getFormats()) {
-                System.out.println(format.getFileFormat());
+            // Upload a file to cloud storage
+            FileApi fileApi = new FileApi(configuration);
+            try (InputStream uploadStream = new FileInputStream("myfile.docx")) {
+                UploadFileRequest uploadRequest = new UploadFileRequest("myfile.docx", uploadStream, null);
+                fileApi.uploadFile(uploadRequest);
             }
-        } catch (ApiException e) {
-            System.err.println("Failed to get supported file formats");
+
+            // Render it to HTML
+            ViewApi viewApi = new ViewApi(configuration);
+            FileInfo fileInfo = new FileInfo();
+            fileInfo.setFilePath("myfile.docx");
+
+            ViewOptions viewOptions = new ViewOptions();
+            viewOptions.setFileInfo(fileInfo);
+            viewOptions.setViewFormat(ViewOptions.ViewFormatEnum.HTML);
+            viewOptions.setOutputPath("myfile.html");
+
+            CreateViewRequest viewRequest = new CreateViewRequest(viewOptions);
+            viewApi.createView(viewRequest);
+
+            // Download the result
+            DownloadFileRequest downloadRequest = new DownloadFileRequest("myfile.html", null, null);
+            InputStream result = fileApi.downloadFile(downloadRequest);
+
+            // Use resulting stream (a *.html file in this example) for your purpose
+            try (OutputStream outStream = new FileOutputStream("output.html")) {
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                while ((bytesRead = result.read(buffer)) != -1) {
+                    outStream.write(buffer, 0, bytesRead);
+                }
+            }
+            result.close();
+
+        } catch (Exception e) {
+            System.err.println("Failed to upload, render, or download the document");
             e.printStackTrace();
         }
     }
